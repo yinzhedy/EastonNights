@@ -15,6 +15,12 @@ body {
     color: white;
 }
 
+
+/* HEADER STYLES*/
+
+header{
+    display: grid;
+}
 #header-nav-bar {
     position: fixed;
     background-color: white;
@@ -23,4 +29,27 @@ body {
     left: 0;
     right: 0;
     top: 0;
+    height: 5%;
+}
+
+
+ul.nav-items {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    align-self: center;
+}
+
+ul.nav-items li {
+    display: inline;
+    padding: 0 10px;
+    text-align: left; /* Align items to the right */
+}
+
+#nav-gallery-label {
+    margin-left: 15%;
+}
+
+ul.nav-items li .separator {
+    margin: 0 5px; /* Adjust the spacing between items and separators */
 }

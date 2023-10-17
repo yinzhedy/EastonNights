@@ -32,6 +32,14 @@
 
 <body>
 
-    <header id='header-nav-bar'>
-        <h1> Peter Ydeen <h1>
+    <header id="header-nav-bar">
+        <ul class="nav-items">
+            <li>PETER YDEEN<span class="separator"></li>
+            <li><span class="separator">|</span> CONTACT</li>
+            <li><span class="separator">|</span> BOOKS</li>
+            <li><span class="separator">|</span> VIDEOS</li>
+            <li><span class="separator">|</span> CV</li>
+            <li><span class="separator">|</span> ABOUT</li>
+            <li id='nav-gallery-label'>GALLERY</li>
+        </ul>
     </header>
