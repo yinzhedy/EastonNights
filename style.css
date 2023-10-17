@@ -7,8 +7,20 @@
     Author: Yinzhe Dong-Ydeen
     Author URI: https://github.com/yinzhedy
 */
-
+:root {
+    --off_black: rgb(10,10,10);
+}
 body {
-    background: black;
+    background: var(--off_black);
     color: white;
+}
+
+#header-nav-bar {
+    position: fixed;
+    background-color: white;
+    color: black;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
 }

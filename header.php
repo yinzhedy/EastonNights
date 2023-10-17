@@ -32,6 +32,6 @@
 
 <body>
 
-    <header>
+    <header id='header-nav-bar'>
         <h1> Peter Ydeen <h1>
     </header>
