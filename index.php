@@ -1,0 +1,1 @@
+//fallback - if wordpress cant locate a template file itll fallback to index.php
