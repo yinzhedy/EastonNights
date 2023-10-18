@@ -60,6 +60,35 @@ function eastonnights_widget_areas(){
 
 add_action('widgets_init' , 'eastonnights_widget_areas');
 
+function create_gallery_post_type() {
+    $labels = array(
+        'name' => 'Galleries',
+        'singular_name' => 'Gallery',
+        'menu_name' => 'Galleries',
+        'all_items' => 'All Images'
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'has_archive' => false,
+        'exclude_from_search' => true,
+        'supports' => array('title', 'editor', 'thumbnail'),
+    );
+
+    register_post_type('gallery', $args);
+}
+add_action('init', 'create_gallery_post_type');
+
+
+function console_log($output, $with_script_tags = true) {
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .');';
+    if ($with_script_tags) {
+    $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}
+
 add_filter('show_admin_bar', '__return_false');
 
 ?>

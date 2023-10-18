@@ -11,6 +11,8 @@ get_header();
     </h1>
 
     <?php
+    $post_type = get_post_type();
+    console_log($post_type);
     get_search_form();
     ?>
 </main>
