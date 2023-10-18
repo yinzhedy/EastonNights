@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Peter Ydeen - Easton Nights Inc.">
     <meta name="author" content="https://github.com/yinzhedy">
-    <title>Peter Ydeen - Easton Nights Inc.</title>
 
     <!-- CSS stylesheets -->
     <link rel="stylesheet" href="style.css">

@@ -53,3 +53,9 @@ ul.nav-items li {
 ul.nav-items li .separator {
     margin: 0 5px; /* Adjust the spacing between items and separators */
 }
+
+/* MAIN SECTION STYLES*/
+
+main {
+    padding-top: 60px;
+}

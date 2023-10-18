@@ -1,5 +1,12 @@
 <?php
 
+function eastonnights_theme_support(){
+    //adds dynamic title tag support
+    add_theme_support('title-tag');
+}
+
+add_action('after_setup_theme' , 'eastonnights_theme_support');
+
 function eastonnights_register_styles(){
 
     $version = wp_get_theme()->get('Version');
