@@ -30,6 +30,7 @@ function eastonnights_register_styles(){
 
     wp_enqueue_style('eastonnights-style' , get_template_directory_uri()."/style.css" , array('normalize-style') , $version , 'all' );
     wp_enqueue_style('normalize-style' , "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css", array(), '8.0.1', 'all');
+    wp_enqueue_style('eastonnights-fontawesome' , "https://kit.fontawesome.com/430f5a55fd.js");
 }
 
 add_action('wp_enqueue_scripts', 'eastonnights_register_styles');
@@ -41,6 +42,23 @@ function eastonnights_register_scripts(){
 }
 
 add_action('wp_enqueue_scripts', 'eastonnights_register_scripts');
+
+function eastonnights_widget_areas(){
+    register_sidebar(
+        array(
+            'before_title' => '',
+            'after_title' => '',
+            'before_widget' => '',
+            'after_widget' => '',
+            'name' => 'Footer Area',
+            'id' => 'footer-1',
+            'description' => 'Footer Widget Area'
+        )
+    );
+    
+};
+
+add_action('widgets_init' , 'eastonnights_widget_areas');
 
 add_filter('show_admin_bar', '__return_false');
 
