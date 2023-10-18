@@ -4,9 +4,9 @@
 
 
     <div class='post-title'>
-        <span>
+        <a href="<?php the_permalink(); ?>">
             <?php the_title(); ?>
-        </span>
+        </a>
     </div>
 
 
