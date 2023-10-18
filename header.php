@@ -36,12 +36,12 @@
         <?php
         wp_nav_menu(
             array(
-                'menu' => 'primary',
+                'menu' => 'homepage-top-nav-menu',
                 'container' => '',
-                'theme-location' => 'primary',
+                'theme-location' => 'homepage-top-nav-menu',
                 'items_wrap' => '<ul class="nav-items"  >%3$s</ul>'
             )
             );
         ?>
-        
+
     </header>

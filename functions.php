@@ -10,8 +10,12 @@ add_action('after_setup_theme' , 'eastonnights_theme_support');
 function eastonnights_menus(){
 
     $locations = array(
-        'primary' => "Desktop Primary Top Nav Bar",
+        'homepage-top-nav-menu' => "Homepage Header Navigation Menu",
+        'homepage-center-nav-menu' => "Homepage Center Navigation Menu",
+        'easton-nights-top-nav-menu' => 'Easton Nights Homepage Header Navigation Menu',
+        'easton-nights-center-nav-menu' => 'Easton Nights Homepage Center Navigation Menu',
         'footer' => "Footer Menu Items"
+
     );
 
     register_nav_menus($locations);
