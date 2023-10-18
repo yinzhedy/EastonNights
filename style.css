@@ -42,16 +42,14 @@ ul.nav-items {
 
 ul.nav-items li {
     display: inline;
+}
+
+ul.nav-items li a{
+    color: black;
+    text-decoration: none;
+    display: inline;
     padding: 0 10px;
     text-align: left; /* Align items to the right */
-}
-
-#nav-gallery-label {
-    margin-left: 15%;
-}
-
-ul.nav-items li .separator {
-    margin: 0 5px; /* Adjust the spacing between items and separators */
 }
 
 /* MAIN SECTION STYLES*/

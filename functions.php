@@ -7,6 +7,18 @@ function eastonnights_theme_support(){
 
 add_action('after_setup_theme' , 'eastonnights_theme_support');
 
+function eastonnights_menus(){
+
+    $locations = array(
+        'primary' => "Desktop Primary Top Nav Bar",
+        'footer' => "Footer Menu Items"
+    );
+
+    register_nav_menus($locations);
+}
+
+add_action('init' , 'eastonnights_menus');
+
 function eastonnights_register_styles(){
 
     $version = wp_get_theme()->get('Version');
