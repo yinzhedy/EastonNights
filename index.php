@@ -15,6 +15,11 @@ get_header();
         }
         
     ?>
+    <div class='pagination-text'>
+        <?php
+            the_posts_pagination();
+        ?>
+    </div>
 </main>
 
 

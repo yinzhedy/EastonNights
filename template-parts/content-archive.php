@@ -1,6 +1,6 @@
 <article class='archive-post'>
 
-    <img class='post-thumbnail' src="<?php the_post_thumbnail_url(); ?>"/>
+    <img class='post-thumbnail' src="<?php the_post_thumbnail_url('large'); ?>"/>
 
 
     <div class='post-title'>
