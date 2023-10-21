@@ -503,15 +503,15 @@ footer{
 
 }
 
-.close .line {
+.open .line {
     grid-row: top-start / bottom-end;
     grid-column: top-start / top-end;
 }
 
-.close .top-line {
+.open .top-line {
     transform: rotate(135deg);
 }
 
-.close .bottom-line {
+.open .bottom-line {
     transform: rotate(-135deg);
 }

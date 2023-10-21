@@ -5,5 +5,5 @@ const menu = document.querySelector('#sub-grid-header-item-icon');
 
 menu.addEventListener('click', () => {
     console.log('click')
-    menu.classList.toggle('close');
+    menu.classList.toggle('open');
 });
