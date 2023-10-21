@@ -1,6 +1,6 @@
 <footer id='footer-grid-item'>
     <div class='footer-item'>
-        <a> Copyright @ Peter Ydeen <a>
+        <a id="footer-copyright"> Copyright @ Peter Ydeen <a>
     </div>
     <div id='footer-sidebar' class='footer-item'>
         <?php

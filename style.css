@@ -492,6 +492,9 @@ footer{
     color: black;
 
 }
+.footer-item a {
+
+}
 
 /* MOBILE - HEADER HAMBURGER MENU ICON
 -------------------------------------------------------------- */
@@ -588,9 +591,9 @@ footer{
 }
 
 .open-fade-in {
-    animation: fadeIn .3s ease forwards;
+    animation: fadeIn .4s ease forwards;
 }
 
 .close-fade-out {
-    animation: fadeOut .3s ease forwards;
+    animation: fadeOut .4s ease forwards;
 }
