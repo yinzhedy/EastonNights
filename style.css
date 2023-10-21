@@ -68,18 +68,23 @@ body {
                     padding: 0;
                     margin: 0;
                 }
-                #sub-grid-header-item-image {
-                    height: 15px;
-                    width: 15px;
-                    background-size: cover;
-                    justify-self: end;
-                    align-self: center;
+
+                #sub-grid-header-item-icon {
                     grid-row: middle-l-start / middle-l-end;
                     grid-column: top-m-start / top-m-end;
+
+                    height: 15px;
+                    width: 15px;
                     padding: 0;
                     margin: 0;
-                }
-                #sub-grid-header-item-image {
+                    align-self: center;
+                    justify-self: end;
+
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 1fr 1fr;
+                    grid-template-areas:    "top"
+                                            "bottom";
 
                 }
 
@@ -474,4 +479,39 @@ footer{
     background-color: white;
     color: black;
 
+}
+
+/* MOBILE - HEADER HAMBURGER MENU ICON
+-------------------------------------------------------------- */
+.line {
+    align-self:center;
+    width: 100%;
+    height: 1.5px;
+    background-color: var(--off_black);
+    transition: transform 0.3s;
+
+}
+
+.top-line{
+    grid-row: top-start / top-end;
+    grid-column: top-start / top-end;
+}
+
+.bottom-line{
+    grid-row: bottom-start / bottom-end;
+    grid-column: top-start / top-end;
+
+}
+
+.close .line {
+    grid-row: top-start / bottom-end;
+    grid-column: top-start / top-end;
+}
+
+.close .top-line {
+    transform: rotate(135deg);
+}
+
+.close .bottom-line {
+    transform: rotate(-135deg);
 }

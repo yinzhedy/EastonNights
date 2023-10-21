@@ -24,6 +24,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Your custom JavaScript file -->
+    <script src="assets/main.js"></script>
     <?php
     wp_head();
     ?>
@@ -43,7 +44,10 @@
                     )
                 );
             ?>
-            <div id="sub-grid-header-item-image" class="menu-icon" style="background-image: url('<?php echo get_template_directory_uri() . '/assets/images/menu-icon-x.png'; ?>');" alt="Menu"></div>
+            <div id="sub-grid-header-item-icon" class="mobile-menu-icon">
+                <div class="top-line line"></div>
+                <div class="bottom-line line"></div>
+            </div>
             
         </div>
 
