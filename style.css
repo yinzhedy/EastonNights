@@ -27,6 +27,13 @@ body {
     font-family: var(--nunito-font);
 }
 
+/* COLOR CHANGES
+-------------------------------------------------------------- */
+.background-off-black {
+    color:white;
+    background-color: var(--off_black);
+}
+
 /* RESPONSIVE GRID SYSTEM
 --------------------------------------------------------------*/
 
@@ -44,7 +51,12 @@ body {
                                 "footer";
     }
 
-
+        #grid-item-menu {
+            grid-row: header-end / footer-end;
+            grid-column: header-start / header-end;
+            z-index: 3;
+            background-color: var(--off_black);
+        }
         #grid-item-header {
             grid-row: header-start / header-end;
             grid-column: header-start / header-end;
@@ -504,6 +516,7 @@ footer{
 }
 
 .open .line {
+    background-color: white;
     grid-row: top-start / bottom-end;
     grid-column: top-start / top-end;
 }
@@ -514,4 +527,70 @@ footer{
 
 .open .bottom-line {
     transform: rotate(-135deg);
+}
+
+/* FULLSCREEN MENU
+-------------------------------------------------------------- */
+.hidden {
+    height: 0;
+}
+
+/* ANIMATIONS
+-------------------------------------------------------------- */
+@keyframes 
+    topBottomFadeIn {
+        from {
+            height: 0;
+        }
+        to {
+            height: 100%;
+        }
+    }
+
+@keyframes 
+    bottomTopFadeOut {
+        from {
+            height: 100%;
+        }
+        to  {
+            height: 0;
+        }
+    }
+
+@keyframes
+    fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+@keyframes
+    fadeOut {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+
+/* ANIMATION CLASSES */
+
+.close {
+    animation: bottomTopFadeOut .4s ease forwards;
+}
+
+.open {
+    animation: topBottomFadeIn .4s ease forwards;
+}
+
+.open-fade-in {
+    animation: fadeIn .3s ease forwards;
+}
+
+.close-fade-out {
+    animation: fadeOut .3s ease forwards;
 }

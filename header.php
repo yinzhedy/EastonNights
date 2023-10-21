@@ -31,6 +31,8 @@
 </head>
 
 <body id="grid-container-body">
+    <div id="grid-item-menu" class="hidden">
+    </div>
 
     <header id="grid-item-header">
         <div id="sub-grid-container-header">
