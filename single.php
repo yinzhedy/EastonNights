@@ -4,8 +4,9 @@ get_header();
 
 
 
-<main>
-    <?php
+<main id='main-grid-item'>
+    <div>
+        <?php
         if( have_posts() ) {
             $post_type = get_post_type();
             console_log($post_type);
@@ -18,14 +19,15 @@ get_header();
                 while( have_posts() ) {
                     the_post();
                     get_template_part('template-parts/content' , 'article');
+                    }
+
                 }
 
+
             }
-
-
-        }
         
-    ?>
+        ?>
+    </div>
 </main>
 
 

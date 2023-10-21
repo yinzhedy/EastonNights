@@ -5,7 +5,7 @@ get_header();
 
 
 
-<main>
+<main id='main-grid-item'>
     <?php
         if( have_posts() ) {
             while( have_posts() ) {

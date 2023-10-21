@@ -11,10 +11,10 @@ add_action('after_setup_theme' , 'eastonnights_theme_support');
 function eastonnights_menus(){
 
     $locations = array(
-        'homepage-top-nav-menu' => "Homepage Header Navigation Menu",
-        'homepage-center-nav-menu' => "Homepage Center Navigation Menu",
-        'easton-nights-top-nav-menu' => 'Easton Nights Homepage Header Navigation Menu',
-        'easton-nights-center-nav-menu' => 'Easton Nights Homepage Center Navigation Menu',
+        'homepage-header' => "Homepage Header Navigation Menu",
+        'homepage-center' => "Homepage Center Navigation Menu",
+        'easton-nights-header' => 'Easton Nights Homepage Header Navigation Menu',
+        'easton-nights-center' => 'Easton Nights Homepage Center Navigation Menu',
         'footer' => "Footer Menu Items"
 
     );
@@ -30,7 +30,7 @@ function eastonnights_register_styles(){
 
     wp_enqueue_style('eastonnights-style' , get_template_directory_uri()."/style.css" , array('normalize-style') , $version , 'all' );
     wp_enqueue_style('normalize-style' , "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css", array(), '8.0.1', 'all');
-    wp_enqueue_style('eastonnights-fontawesome' , "https://kit.fontawesome.com/430f5a55fd.js");
+    wp_enqueue_style('eastonnights-fonts-nunito-sans' , "https://fonts.googleapis.com/css2?family=Antic+Didone&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Cormorant+Infant:wght@300;400;500;600;700&family=Cormorant+SC:wght@300;500;600;700&family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,700&display=swap");
 }
 
 add_action('wp_enqueue_scripts', 'eastonnights_register_styles');

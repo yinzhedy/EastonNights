@@ -29,19 +29,24 @@
     ?>
 </head>
 
-<body>
+<body id="grid-container-body">
 
-    <header id="header-nav-bar">
+    <header id="grid-item-header">
+        <div id="sub-grid-container-header">
+            <?php
+                wp_nav_menu(
+                    array(
+                        'menu' => 'homepage-top',
+                        'container' => '',
+                        'theme_location' => 'homepage-top',
+                        'items_wrap' => '<ul id="sub-grid-header-item-menu" class="menu header-menu"  >%3$s</ul>'
+                    )
+                );
+            ?>
+            <div id="sub-grid-header-item-image" class="menu-icon" style="background-image: url('<?php echo get_template_directory_uri() . '/assets/images/menu-icon-x.png'; ?>');" alt="Menu"></div>
+            
+        </div>
 
-        <?php
-        wp_nav_menu(
-            array(
-                'menu' => 'homepage-top-nav-menu',
-                'container' => '',
-                'theme-location' => 'homepage-top-nav-menu',
-                'items_wrap' => '<ul class="nav-items"  >%3$s</ul>'
-            )
-            );
-        ?>
+        
 
     </header>

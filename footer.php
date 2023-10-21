@@ -1,4 +1,4 @@
-<footer id='footer'>
+<footer id='footer-grid-item'>
     <div class='footer-item'>
         <a> Copyright @ Peter Ydeen <a>
     </div>
