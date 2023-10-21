@@ -27,11 +27,15 @@ body {
     font-family: var(--nunito-font);
 }
 
-/* COLOR CHANGES
+/* GENERAL DISPLAY STYLES
 -------------------------------------------------------------- */
 .background-off-black {
     color:white;
     background-color: var(--off_black);
+}
+
+.display-none {
+    display: none;
 }
 
 /* RESPONSIVE GRID SYSTEM
@@ -57,6 +61,28 @@ body {
             z-index: 3;
             background-color: var(--off_black);
         }
+            #sub-grid-menu-container {
+                height: 100%;
+                width: 100%;
+                padding: 0;
+                margin-block: 0;
+                margin-inline: 0;
+                padding-inline: 0;
+                display: grid;
+                grid-template-columns: 1fr 16fr 1fr;
+                grid-template-rows: 1fr 16fr 1fr;
+                grid-template-areas:    "top-l      top-m       top-r"
+                                        "mid-l      mid         mid-r"
+                                        "bottom-l   bottom-m    bottom-r";
+
+            }
+                #sub-grid-menu-item-menu {
+                    padding: 0;
+                    margin: 0;
+                    grid-area: mid
+                    
+                }
+
         #grid-item-header {
             grid-row: header-start / header-end;
             grid-column: header-start / header-end;
@@ -463,8 +489,8 @@ header{
     color: grey;
 }
 
-/* MENU STYLES*/
-
+/* MENU STYLES
+-------------------------------------------------------------- */
 .menu {
     list-style-type: none;
 }
@@ -475,6 +501,7 @@ header{
     padding: 0 10px;
     text-align: left;
 }
+/* HEADER MENU */
 
 .header-menu li, .header-menu li a {
     color:black;
@@ -485,16 +512,29 @@ header{
     color: white;
 }
 
+/* MOBILE FULLSCREEN MENU */
 
-/* FOOTER STYLES*/
+.hidden {
+    height: 0;
+}
+
+.mobile-full-screen-menu li a{
+    color: white;
+    text-decoration: none;
+}
+
+/* FOOTER STYLES
+-------------------------------------------------------------- */
 footer{
     background-color: white;
     color: black;
 
 }
-.footer-item a {
-
+#footer-grid-item .background-off-black {
+    color: var(--off_black);
 }
+
+
 
 /* MOBILE - HEADER HAMBURGER MENU ICON
 -------------------------------------------------------------- */
@@ -532,16 +572,10 @@ footer{
     transform: rotate(-135deg);
 }
 
-/* FULLSCREEN MENU
--------------------------------------------------------------- */
-.hidden {
-    height: 0;
-}
-
 /* ANIMATIONS
 -------------------------------------------------------------- */
 @keyframes 
-    topBottomFadeIn {
+    openTopBottom {
         from {
             height: 0;
         }
@@ -551,7 +585,7 @@ footer{
     }
 
 @keyframes 
-    bottomTopFadeOut {
+    closeBottomTop {
         from {
             height: 100%;
         }
@@ -583,11 +617,11 @@ footer{
 /* ANIMATION CLASSES */
 
 .close {
-    animation: bottomTopFadeOut .4s ease forwards;
+    animation: closeBottomTop .4s ease forwards;
 }
 
 .open {
-    animation: topBottomFadeIn .4s ease forwards;
+    animation: openTopBottom .4s ease forwards;
 }
 
 .open-fade-in {

@@ -13,6 +13,7 @@ function eastonnights_menus(){
     $locations = array(
         'homepage-header' => "Homepage Header Navigation Menu",
         'homepage-center' => "Homepage Center Navigation Menu",
+        'mobile-homepage-full-screen' => "Mobile Homepage Full Screen Navigation Menu",
         'easton-nights-header' => 'Easton Nights Homepage Header Navigation Menu',
         'easton-nights-center' => 'Easton Nights Homepage Center Navigation Menu',
         'footer' => "Footer Menu Items"

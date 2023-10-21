@@ -32,6 +32,18 @@
 
 <body id="grid-container-body">
     <div id="grid-item-menu" class="hidden">
+        <div id="sub-grid-menu-container">
+            <?php
+                wp_nav_menu(
+                    array(
+                        'menu' => 'mobile-homepage-full-screen',
+                        'container' => '',
+                        'theme_location' => 'mobile-homepage-full-screen',
+                        'items_wrap' => '<ul id="sub-grid-menu-item-menu" class="menu mobile-full-screen-menu display-none"  >%3$s</ul>'
+                    )
+                );
+            ?>
+        </div>
     </div>
 
     <header id="grid-item-header">
