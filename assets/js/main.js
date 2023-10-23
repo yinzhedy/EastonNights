@@ -7,6 +7,7 @@ const headerGridItem = document.querySelector('#grid-item-header');
 const footerItem = document.querySelector('.footer-item')
 const footerCopyright = document.querySelector('#footer-copyright')
 const mobileFullScreenMenu = document.querySelector('.mobile-full-screen-menu')
+const headerMenuLogo = document.querySelector('#sub-grid-header-item-logo')
 
 headerMenuIcon.addEventListener('click', () => {
     console.log('click');
@@ -14,6 +15,7 @@ headerMenuIcon.addEventListener('click', () => {
     headerGridItem.classList.toggle('background-off-black') //change the header bgcolor to off black
     footerItem.classList.toggle('background-off-black') //change footer item bgcolor to off black
     mobileFullScreenMenu.classList.toggle('display-none')
+    headerMenuLogo.classList.toggle('display-none')
 
     // display open and close animations for fullscreen menu
     if(gridItemMenu.classList.contains('open')) { 

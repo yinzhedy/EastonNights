@@ -520,17 +520,6 @@ header{
     color: white;
 }
 
-/* MOBILE FULLSCREEN MENU */
-
-.hidden {
-    height: 0;
-}
-
-.mobile-full-screen-menu li a{
-    color: white;
-    text-decoration: none;
-}
-
 /* FOOTER STYLES
 -------------------------------------------------------------- */
 footer{
@@ -546,6 +535,19 @@ footer{
 
 /* MOBILE STYLES (<600px)
 -------------------------------------------------------------- */
+/* MOBILE FULLSCREEN MENU */
+
+.hidden {
+    height: 0;
+}
+
+.mobile-full-screen-menu li a{
+    color: white;
+    text-decoration: none;
+}
+.display-none {
+    display: none;
+}
 /* MENU ICON */
 .line {
     align-self:center;
