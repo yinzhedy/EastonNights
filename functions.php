@@ -81,6 +81,16 @@ function create_gallery_post_type() {
 }
 add_action('init', 'create_gallery_post_type');
 
+function get_menu_items_by_registered_slug($menu_slug) {
+    $menu_items = array();
+
+    if(($locations = get_nav_menu_locations() ) && isset($locations[$menu_slug])) {
+        $menu = get_term( $locations[$menu_slug]);
+        $menu_items = wp_get_nav_menu_items($menu->term_id);
+    }
+    return $menu_items;
+}
+
 
 function console_log($output, $with_script_tags = true) {
     $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .');';
