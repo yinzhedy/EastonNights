@@ -817,6 +817,10 @@ header{
     display: inline;
 }
 
+.header-menu li:first-child {
+    font-weight: var(--font-weight-semi-bold);
+}
+
 .center-menu li a{
     color: white;
 }
