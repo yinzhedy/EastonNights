@@ -1,11 +1,11 @@
-//single pages
+//pages.php
 <?php
 get_header();
 ?>
 
 
 
-<main id='main-grid-item'>
+<main id='grid-item-main'>
     <div id='sub-grid-container-main'>
         <?php
         if( have_posts() ) {
