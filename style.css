@@ -434,7 +434,6 @@ body {
             }
                 #sub-grid-header-item-menu {
                     align-self: center;
-                    justify-self: start;
                     grid-row: middle-l-start / middle-l-end;
                     grid-column: top-m-start / top-m-end;
 
@@ -808,7 +807,7 @@ header{
 .menu li a{
     text-decoration: none;
     display: inline;
-    padding: 0 10px;
+    padding: 0 10px 0 0;
     text-align: left;
 }
 /* HEADER MENU */
