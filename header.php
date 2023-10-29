@@ -49,29 +49,29 @@
     <header id="grid-item-header">
         <div id="sub-grid-container-header">
             <div id="sub-grid-header-item-logo">
-                <?php
-                    
-                    // Fetch menu items from the 'mobile-homepage-full-screen' menu.
-                    $menu_items = get_menu_items_by_registered_slug('homepage-header');
-                    if ($menu_items) {
-                    // Get the first menu item.
-                    $first_menu_item = $menu_items[0];
-
-                    // Output the first menu item title and URL.
-                    echo '<a href="' . esc_url($first_menu_item->url) . '" class="logo-text">' . esc_html($first_menu_item->title) . '</a>';
-                    }
-                ?>
-            </div>
             <?php
-                wp_nav_menu(
-                    array(
-                        'menu' => 'homepage-header',
-                        'container' => '',
-                        'theme_location' => 'homepage-header',
-                        'items_wrap' => '<ul id="sub-grid-header-item-menu" class="menu header-menu"  >%3$s</ul>'
-                    )
-                );
+                // Fetch menu items from the 'mobile-homepage-full-screen' menu.
+                $menu_items = get_menu_items_by_registered_slug('homepage-header');
+                if ($menu_items) {
+                // Get the first menu item.
+                $first_menu_item = $menu_items[0];
+                echo '<a href="' . esc_url($first_menu_item->url) . '" class="logo-text" ;">' . esc_html($first_menu_item->title) . '</a>';
+                };
             ?>
+        </div>
+        <?php
+            $selectedFontClass = get_theme_mod('selected_font_class', 'custom-header-menu-font');
+            console_log($selectedFontClass);
+            console_log(get_theme_mod('selected_custom_font'));
+            wp_nav_menu(
+                array(
+                    'menu' => 'homepage-header',
+                    'container' => '',
+                    'theme_location' => 'homepage-header',
+                    'items_wrap' => '<ul id="sub-grid-header-item-menu" class="menu header-menu ' . $selectedFontClass . '"  >%3$s</ul>',
+                )
+            );
+        ?>
             <div id="sub-grid-header-item-icon" class="mobile-menu-icon">
                 <div class="top-line line"></div>
                 <div class="bottom-line line"></div>

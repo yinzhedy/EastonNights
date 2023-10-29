@@ -11,6 +11,7 @@
 :root {
     --off_black: rgb(10,10,10);
     --nunito-font: 'Nunito Sans', sans-serif;
+    --times-new-roman-font: 'Times New Roman', Times, serif;
     --font-weight-extra-light: 200;
     --font-weight-light: 300;
     --font-weight-regular: 400;
@@ -896,6 +897,9 @@ header{
     text-align: left;
 }
 /* HEADER MENU */
+.header-menu {
+    font-family: var(--header-menu-font)
+}
 
 .header-menu li, .header-menu li a {
     color:black;
@@ -1051,3 +1055,6 @@ footer{
 .close-fade-out {
     animation: fadeOut .4s ease forwards;
 }
+
+/* CUSTOMIZER CLASSES
+-------------------------------------------------------------- */

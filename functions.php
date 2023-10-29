@@ -40,6 +40,7 @@ function eastonnights_register_scripts(){
 
     $version = wp_get_theme()->get('Version');
     wp_enqueue_script('eastonnights-script' , get_template_directory_uri()."/assets/js/main.js" , array() , $version , true );
+    wp_enqueue_script('eastonnights-customizer-script', get_template_directory_uri() . '/assets/js/customizer.js', array('jquery', 'customize-preview'), $version , true);
 }
 
 add_action('wp_enqueue_scripts', 'eastonnights_register_scripts');
@@ -90,6 +91,40 @@ function get_menu_items_by_registered_slug($menu_slug) {
     }
     return $menu_items;
 }
+
+function eastonnights_theme_customize_register($wp_customize) {
+    // Add section for custom font selection
+    $wp_customize->add_section('custom_fonts', array(
+        'title' => 'Custom Font Options',
+    ));
+
+    // Add control to select the custom font
+    $wp_customize->add_setting('header_menu_font', array(
+        'default' => 'Nunito Sans, sans-serif', // Set a default font option
+    ));
+
+    $wp_customize->add_control('header_menu_font', array(
+        'label' => 'Select Font for Header Menu',
+        'section' => 'custom_fonts',
+        'type' => 'select',
+        'choices' => array(
+            'Nunito Sans, sans-serif' => 'Nunito Font',
+            '"Times New Roman", Times, serif' => 'Times New Roman',
+        ),
+    ));
+}
+add_action('customize_register', 'eastonnights_theme_customize_register');
+add_action('customize_preview_init', 'eastonnights_register_scripts');
+
+function eastonnights_theme_customize_css() {
+    ?>
+        <style type="text/css">
+            .header-menu { font-family : <?php echo get_theme_mod('header_menu_font', 'Nunito Sans, sans-serif'); ?>; }
+        </style>
+    <?php
+};
+
+add_action( 'wp_head', 'eastonnights_theme_customize_css');
 
 
 function console_log($output, $with_script_tags = true) {
