@@ -53,7 +53,6 @@
                     
                     // Fetch menu items from the 'mobile-homepage-full-screen' menu.
                     $menu_items = get_menu_items_by_registered_slug('homepage-header');
-                    console_log($menu_items);
                     if ($menu_items) {
                     // Get the first menu item.
                     $first_menu_item = $menu_items[0];

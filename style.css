@@ -216,6 +216,30 @@ body {
 }
 
 /*GRID - SMALL DEVICES (portrait tablets & large phones)*/
+
+#sub-grid-main-item-title {
+    display:none;
+}
+#sub-grid-main-item-gallery {
+    height: 100%;
+    width: 100%;
+    grid-area: center;
+} 
+    #inner-sub-grid-main-container {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.25vmax;
+        justify-items: center;
+
+    }
+        .inner-sub-grid-main-item-image {
+            max-width: 100%;
+            height: auto;
+
+        }
+
 @media screen and (min-width:600px) and (max-width:767px) {
     #grid-container-body{
         margin: 0 0 0 0;

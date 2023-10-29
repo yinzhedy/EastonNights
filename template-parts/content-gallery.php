@@ -11,20 +11,26 @@ $query = new WP_Query(array(
 if ($query->have_posts()) :
     while ($query->have_posts()) : $query->the_post();
 ?>
-        <h2><?php the_title(); ?></h2>
-        <div class="gallery-title"><?php get_post_field('gallery_title'); ?></div>
-
+    <div id="sub-grid-main-item-title"><?php the_title(); ?></div>
+    <div id="sub-grid-main-item-gallery">
         <?php
-        $gallery_images = get_post_field('gallery_image');
-        if ($gallery_images) {
-            echo '<div class="gallery-images">';
-            foreach ($gallery_images as $image) {
-                echo '<img src="' . esc_url($image['url']) . '" alt="">';
+        // Get the post content
+        $post_content = get_the_content();
+
+        // Use a regular expression to extract image URLs
+        $pattern = '/<img [^>]*src=["\']([^"\']+)["\'][^>]*>/i';
+        preg_match_all($pattern, $post_content, $matches);
+
+        if (!empty($matches[1])) {
+            echo '<div id="inner-sub-grid-main-container">';
+            foreach ($matches[1] as $image_url) {
+                echo '<img class="inner-sub-grid-main-item-image" src="' . esc_url($image_url) . '" alt="">';
             }
             echo '</div>';
         }
         ?>
-<?php
+    </div>
+    <?php
     endwhile;
 endif;
 wp_reset_postdata();
