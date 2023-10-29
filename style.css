@@ -748,6 +748,8 @@ body {
             }
                 #sub-grid-main-front-page-item-image {
                 width: 100%;
+                max-width: 1200px;
+                justify-self:center;
                 z-index: 1;
                 grid-row: center-start / center-end;
                 grid-column: center-start / center-end;
