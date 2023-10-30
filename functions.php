@@ -143,6 +143,24 @@ function eastonnights_theme_customize_register($wp_customize) {
             'Nunito Sans, sans-serif' => 'Nunito',
             'Moon Light, sans-serif' => 'Moon Light',
             'Moon Bold, sans-serif' => 'Moon Bold',
+            'Driver Gothic, sans-serif' => 'Driver Gothic',
+            '"Times New Roman", Times, serif' => 'Times New Roman',
+        ),
+    ));
+
+    $wp_customize->add_setting('center_menu_font', array(
+        'default' => 'Nunito Sans, sans-serif', // Set a default font option
+    ));
+
+    $wp_customize->add_control('center_menu_font', array(
+        'label' => 'Select Font for Center Menu',
+        'section' => 'custom_style_options',
+        'type' => 'select',
+        'choices' => array(
+            'Nunito Sans, sans-serif' => 'Nunito',
+            'Moon Light, sans-serif' => 'Moon Light',
+            'Moon Bold, sans-serif' => 'Moon Bold',
+            'Driver Gothic, sans-serif' => 'Driver Gothic',
             '"Times New Roman", Times, serif' => 'Times New Roman',
         ),
     ));
@@ -167,11 +185,19 @@ add_action('customize_preview_init', 'eastonnights_register_scripts');
 
 function eastonnights_theme_customize_css() {
     ?>
-        <style type="text/css">
-            .header-menu { font-family : <?php echo get_theme_mod('header_menu_font', 'Nunito Sans, sans-serif'); ?>; }
-        </style>
+    <style type="text/css">
+        /* Header Menu */
+        .header-menu {
+            font-family: <?php echo get_theme_mod('header_menu_font', 'Nunito Sans, sans-serif'); ?>;
+        }
+
+        /* Center Menu */
+        .center-menu {
+            font-family: <?php echo get_theme_mod('center_menu_font', 'Nunito Sans, sans-serif'); ?>;
+        }
+    </style>
     <?php
-};
+}
 add_action( 'wp_head', 'eastonnights_theme_customize_css');
 
 function update_background_color_meta_data() {

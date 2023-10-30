@@ -60,15 +60,12 @@
             ?>
         </div>
         <?php
-            $selectedFontClass = get_theme_mod('selected_font_class', 'custom-header-menu-font');
-            console_log($selectedFontClass);
-            console_log(get_theme_mod('selected_custom_font'));
             wp_nav_menu(
                 array(
                     'menu' => 'homepage-header',
                     'container' => '',
                     'theme_location' => 'homepage-header',
-                    'items_wrap' => '<ul id="sub-grid-header-item-menu" class="menu header-menu ' . $selectedFontClass . '"  >%3$s</ul>',
+                    'items_wrap' => '<ul id="sub-grid-header-item-menu" class="menu header-menu"  >%3$s</ul>',
                 )
             );
         ?>

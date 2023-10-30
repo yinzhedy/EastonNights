@@ -9,24 +9,31 @@
 */
 
 :root {
-    --off_black: rgb(10,10,10);
-    --light-grey: rgb(190,192,191);
-    --header-font: 'Nunito Sans', sans-serif;
-    --footer-font: 'Nunito Sans', sans-serif;
+    --primary-color: black;
+    --secondary-color: white;
     --primary-font: 'Nunito Sans', sans-serif;
     --secondary-font: 'Nunito Sans', sans-serif;
     --emphasis-font: 'Nunito Sans', sans-serif;
-    --nunito-font: 'Nunito Sans', sans-serif;
-    --driver-gothic-font: 'Driver Gothic', sans-serif;
-    --moon-light-font: 'Moon Light', sans-serif;
-    --moon-bold-font: 'Moon Bold', sans-serif;
-    --times-new-roman-font: 'Times New Roman', Times, serif;
+
+    --header-font: 'Nunito Sans', sans-serif;
+    --footer-font: 'Nunito Sans', sans-serif;
+    
     --font-weight-extra-light: 200;
     --font-weight-light: 300;
     --font-weight-regular: 400;
     --font-weight-medium: 500;
     --font-weight-semi-bold: 600;
     --font-weight-bold: 700;
+
+    --off_black: rgb(10,10,10);
+    --light-grey: rgb(190,192,191);
+    --nunito-font: 'Nunito Sans', sans-serif;
+    --driver-gothic-font: 'Driver Gothic', sans-serif;
+    --moon-light-font: 'Moon Light', sans-serif;
+    --moon-bold-font: 'Moon Bold', sans-serif;
+    --times-new-roman-font: 'Times New Roman', Times, serif;
+
+    
 }
 
 /*FONT FILES
@@ -68,7 +75,7 @@
 -------------------------------------------------------------- */
 
 body {
-    background: var(--off_black);
+    background: var(--primary-color);
     color: white;
     font-family: var(--primary-font);
 }
@@ -78,6 +85,16 @@ body {
 .background-off-black {
     color:white;
     background-color: var(--off_black);
+}
+
+.background-primary{
+    color: var(--secondary-color);
+    background-color:var(--primary-color);
+}
+
+.background-secondary {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
 }
 
 .display-none {

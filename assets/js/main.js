@@ -29,7 +29,7 @@ fadeInMenuItems()
 headerMenuIcon.addEventListener('click', () => {
     console.log('click');
     headerMenuIcon.classList.toggle('open'); //trigger icon animation
-    headerGridItem.classList.toggle('background-off-black') //change the header bgcolor to off black
+    headerGridItem.classList.toggle('background-primary') //change the header bgcolor to off black
     footerItem.classList.toggle('background-off-black') //change footer item bgcolor to off black
     mobileFullScreenMenu.classList.toggle('display-none')
     headerMenuLogo.classList.toggle('display-none')
