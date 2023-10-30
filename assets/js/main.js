@@ -1,15 +1,23 @@
-
-// MOBILE - HEADER HAMBURGER MENU ICON ***************************************
-console.log('hello')
-const headerMenuIcon = document.querySelector('#sub-grid-header-item-icon');
 const gridItemMenu = document.querySelector('#grid-item-menu');
-const headerGridItem = document.querySelector('#grid-item-header');
+
+const gridItemHeader = document.querySelector('#grid-item-header');
+const headerMenuLogo = document.querySelector('#sub-grid-header-item-logo');
+const subGridHeaderItemLabel = document.querySelector('#sub-grid-header-item-label');
+
+const gridItemMain = document.querySelector('#grid-item-main')
+const subGridMainContainer = document.querySelector('#sub-grid-main-container')
+const subGridMainItemGallery = document.querySelector('#sub-grid-main-item-gallery')
+const subGridMainItemTitle = document.querySelector('#sub-grid-main-item-title')
+
+const mobileFullScreenMenu = document.querySelector('.mobile-full-screen-menu')
+const galleryImages = document.querySelectorAll('.inner-sub-grid-main-item-image')
+const headerMenuIcon = document.querySelector('#sub-grid-header-item-icon');
+const centerMenuItems = document.querySelectorAll('.center-menu li a');
+
 const footerItem = document.querySelector('.footer-item')
 const footerCopyright = document.querySelector('#footer-copyright')
-const mobileFullScreenMenu = document.querySelector('.mobile-full-screen-menu')
-const headerMenuLogo = document.querySelector('#sub-grid-header-item-logo')
-const galleryImages = document.querySelectorAll('.inner-sub-grid-main-item-image')
-const centerMenuItems = document.querySelectorAll('.center-menu li a');
+
+
 
 //function loading in menu items via fade in animation
 function fadeInMenuItems() {
@@ -29,7 +37,7 @@ fadeInMenuItems()
 headerMenuIcon.addEventListener('click', () => {
     console.log('click');
     headerMenuIcon.classList.toggle('open'); //trigger icon animation
-    headerGridItem.classList.toggle('background-primary') //change the header bgcolor to off black
+    gridItemHeader.classList.toggle('background-off-black') //change the header bgcolor to off black
     footerItem.classList.toggle('background-off-black') //change footer item bgcolor to off black
     mobileFullScreenMenu.classList.toggle('display-none')
     headerMenuLogo.classList.toggle('display-none')
@@ -80,3 +88,14 @@ galleryImages.forEach(image => {
 
     })
 })
+
+
+function LightMode() {
+    if (subGridMainContainer.classList.contains('background-light')) {
+        gridItemHeader.classList.add('background-off-white')
+        subGridMainItemTitle.classList.add('font-accent-color')
+        console.log(subGridMainItemGallery.classList)
+    }
+}
+
+LightMode();

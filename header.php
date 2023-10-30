@@ -47,7 +47,7 @@
     </div>
 
     <header id="grid-item-header">
-        <div id="sub-grid-container-header">
+        <div id="sub-grid-header-container">
             <div id="sub-grid-header-item-logo">
             <?php
                 // Fetch menu items from the 'mobile-homepage-full-screen' menu.
@@ -55,7 +55,7 @@
                 if ($menu_items) {
                 // Get the first menu item.
                 $first_menu_item = $menu_items[0];
-                echo '<a href="' . esc_url($first_menu_item->url) . '" class="logo-text" ;">' . esc_html($first_menu_item->title) . '</a>';
+                echo '<a href="' . esc_url($first_menu_item->url) . '" class="logo-text uppercase" ;">' . esc_html($first_menu_item->title) . '</a>';
                 };
             ?>
         </div>
@@ -65,11 +65,11 @@
                     'menu' => 'homepage-header',
                     'container' => '',
                     'theme_location' => 'homepage-header',
-                    'items_wrap' => '<ul id="sub-grid-header-item-menu" class="menu header-menu"  >%3$s</ul>',
+                    'items_wrap' => '<ul id="sub-grid-header-item-menu" class="menu header-menu uppercase"  >%3$s</ul>',
                 )
             );
         ?>
-            <div id="sub-grid-header-item-label">
+            <div id="sub-grid-header-item-label" class="uppercase">
                 <?php
                     if (!is_front_page()) {
                     // Check if the current page is not the homepage

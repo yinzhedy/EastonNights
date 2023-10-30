@@ -20,11 +20,11 @@ get_header();
                 console_log(add_background_color_class(false));
             }
 
-            echo '<div id="sub-grid-container-main" class="' . $background_color_class . '">';
+            echo '<div id="sub-grid-main-container" class="' . $background_color_class . '">';
             get_template_part('template-parts/content', 'gallery');
             echo '</div>';
         } else {
-            echo '<div id="sub-grid-container-main">';
+            echo '<div id="sub-grid-main-container">';
             while (have_posts()) {
                 the_post();
                 get_template_part('template-parts/content', 'article');

@@ -6,7 +6,7 @@ get_header();
 
 
 <main id='grid-item-main'>
-    <div id='sub-grid-container-main'>
+    <div id='sub-grid-main-container'>
         <?php
         if( have_posts() ) {
                 while( have_posts() ) {

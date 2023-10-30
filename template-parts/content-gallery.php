@@ -1,8 +1,6 @@
 <?php
 // Get the slug from the URL
 $slug = basename(get_permalink());
-console_log(get_permalink());
-console_log($slug);
 
 // Set up the query to retrieve the gallery post based on the slug
 $query = new WP_Query(array(
@@ -12,13 +10,12 @@ $query = new WP_Query(array(
 
 if ($query->have_posts()) :
     while ($query->have_posts()) : $query->the_post();
-
     // Get the post ID
     $post_id = get_the_ID();
     // Get the background_color custom field of post using post id
     $background_color = get_post_meta($post_id, 'background_color', true);
 ?>
-    <div id="sub-grid-main-item-title"><?php the_title(); ?></div>
+    <div id="sub-grid-main-item-title" class="uppercase"><?php the_title(); ?></div>
     <div id="sub-grid-main-item-gallery" class="<?php add_background_color_class(); ?>">
         <?php
         // Get the post content
