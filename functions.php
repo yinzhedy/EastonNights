@@ -108,8 +108,8 @@ function display_gallery_background_color($post) {
     ?>
     <label for="background_color">Background Color:</label>
     <select name="background_color" id="background_color">
-        <option value="light" <?php selected($background_color, 'light'); ?>>Light</option>
         <option value="dark" <?php selected($background_color, 'dark'); ?>>Dark</option>
+        <option value="light" <?php selected($background_color, 'light'); ?>>Light</option>
     </select>
     <?php
 }
@@ -219,20 +219,27 @@ function update_background_color_meta_data() {
 add_action('wp_ajax_update_background_color', 'update_background_color_meta_data');
 add_action('wp_ajax_nopriv_update_background_color', 'update_background_color_meta_data');
 
-function add_background_color_class($secondary = false) {
+function add_background_color_class($return_echo=true) {
     $post_id = get_the_ID();
     $background_color = get_post_meta($post_id, 'background_color', true);
-
-    if ($secondary) {
-        echo ' background-grey';
+    if ($return_echo === true) {
+        if ($background_color === 'light') {
+            echo 'background-light';
+        } 
+        elseif ($background_color === 'dark') {
+            echo 'background-dark';
+        }
     }
-    elseif ($background_color === 'light') {
-        echo 'background-light';
-    } 
-    elseif ($background_color === 'dark') {
-        echo 'background-dark';
+    elseif ($return_echo === false) {
+        if ($background_color === 'light') {
+            return 'background-light';
+        } 
+        elseif ($background_color === 'dark') {
+            return 'background-dark';
+        }
     }
 }
+
 
 function add_featured_image_to_menu_items($atts, $item, $args) {
     if ($args->theme_location === 'homepage-center' && $item->object == 'gallery') {

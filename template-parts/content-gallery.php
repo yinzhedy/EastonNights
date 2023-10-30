@@ -15,16 +15,10 @@ if ($query->have_posts()) :
 
     // Get the post ID
     $post_id = get_the_ID();
-
-    // Get the background_color custom field
+    // Get the background_color custom field of post using post id
     $background_color = get_post_meta($post_id, 'background_color', true);
-
-    // Log the background color to the browser console
-    console_log(get_post_meta($post_id));
-    console_log($background_color);
 ?>
     <div id="sub-grid-main-item-title"><?php the_title(); ?></div>
-    <div id="sub-grid-main-item-center" class="<?php add_background_color_class(true); ?>"></div>
     <div id="sub-grid-main-item-gallery" class="<?php add_background_color_class(); ?>">
         <?php
         // Get the post content
