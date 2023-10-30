@@ -114,7 +114,11 @@ body {
                     align-self: center;
                     justify-self: start;
                 }
-
+                #sub-grid-header-item-label {
+                    grid-area: middle-r;
+                    justify-self: end;
+                    align-self: center;
+                }
                 #sub-grid-header-item-icon {
                     grid-row: middle-l-start / middle-l-end;
                     grid-column: top-m-start / top-m-end;
@@ -312,7 +316,9 @@ body {
                     align-self: center;
                     justify-self: start;
                 }
-
+                #sub-grid-header-item-label {
+                    display: none;
+                }
                 #sub-grid-header-item-icon {
                     grid-row: middle-l-start / middle-l-end;
                     grid-column: top-m-start / top-m-end;
@@ -482,7 +488,9 @@ body {
                 #sub-grid-header-item-logo {
                     display: none;
                 }
-
+                #sub-grid-header-item-label {
+                    display: none;
+                }
                 #sub-grid-header-item-icon {
                     display: none;
                 }
@@ -610,7 +618,13 @@ body {
                 #sub-grid-header-item-logo {
                     display: none;
                 }
-
+                #sub-grid-header-item-label {
+                    font-weight: var(--font-weight-bold);
+                    text-transform: uppercase;
+                    grid-area: middle;
+                    justify-self: end;
+                    align-self: center;
+                }
                 #sub-grid-header-item-icon {
                     display: none;
                 }
@@ -735,7 +749,13 @@ body {
                 #sub-grid-header-item-logo {
                     display: none;
                 }
-
+                #sub-grid-header-item-label {
+                    font-weight: var(--font-weight-bold);
+                    text-transform: uppercase;
+                    grid-area: middle;
+                    justify-self: end;
+                    align-self: center;
+                }
                 #sub-grid-header-item-icon {
                     display: none;
                 }

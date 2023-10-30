@@ -72,6 +72,15 @@
                 )
             );
         ?>
+            <div id="sub-grid-header-item-label">
+                <?php
+                    if (!is_front_page()) {
+                    // Check if the current page is not the homepage
+                    $current_title = get_the_title(); // Get the title of the current page
+                    echo esc_html($current_title);
+                    }
+                ?>
+            </div>
             <div id="sub-grid-header-item-icon" class="mobile-menu-icon">
                 <div class="top-line line"></div>
                 <div class="bottom-line line"></div>
