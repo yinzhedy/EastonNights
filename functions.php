@@ -191,13 +191,17 @@ function update_background_color_meta_data() {
 add_action('wp_ajax_update_background_color', 'update_background_color_meta_data');
 add_action('wp_ajax_nopriv_update_background_color', 'update_background_color_meta_data');
 
-function add_background_color_class() {
+function add_background_color_class($secondary = false) {
     $post_id = get_the_ID();
     $background_color = get_post_meta($post_id, 'background_color', true);
 
-    if ($background_color === 'light') {
+    if ($secondary) {
+        echo ' background-grey';
+    }
+    elseif ($background_color === 'light') {
         echo 'background-light';
-    } elseif ($background_color === 'dark') {
+    } 
+    elseif ($background_color === 'dark') {
         echo 'background-dark';
     }
 }

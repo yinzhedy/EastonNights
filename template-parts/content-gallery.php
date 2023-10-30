@@ -22,6 +22,7 @@ if ($query->have_posts()) :
     console_log($background_color);
 ?>
     <div id="sub-grid-main-item-title"><?php the_title(); ?></div>
+    <div id="sub-grid-main-item-center" class="<?php add_background_color_class(true); ?>"></div>
     <div id="sub-grid-main-item-gallery" class="<?php add_background_color_class(); ?>">
         <?php
         // Get the post content

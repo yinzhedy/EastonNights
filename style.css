@@ -10,6 +10,7 @@
 
 :root {
     --off_black: rgb(10,10,10);
+    --light-grey: rgb(190,192,191);
     --nunito-font: 'Nunito Sans', sans-serif;
     --times-new-roman-font: 'Times New Roman', Times, serif;
     --font-weight-extra-light: 200;
@@ -230,6 +231,9 @@ body {
     width: 100%;
     grid-area: center;
 } 
+#sub-grid-main-item-center {
+    grid-column: top-m-start / top-m-end;
+}
     #inner-sub-grid-main-container {
         height: 100%;
         width: 100%;
@@ -1076,10 +1080,13 @@ footer{
     animation: fadeOut .4s ease forwards;
 }
 
-/* CUSTOMIZER CLASSES
+/* CUSTOM FIELDS CLASSES
 -------------------------------------------------------------- */
 .background-light {
     background-color: white;
+}
+.background-grey {
+    background-color: var(--light-grey);
 }
 
 .background-dark {
