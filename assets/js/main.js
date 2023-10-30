@@ -51,3 +51,25 @@ headerMenuIcon.addEventListener('click', () => {
         footerCopyright.classList.toggle('close-fade-out');
     }
 });
+
+//change pages with center menu's background image on menu item hover
+const galleryItems = document.querySelectorAll('.center-menu li a');
+
+galleryItems.forEach(item => {
+    const mainImage = document.getElementById('sub-grid-main-front-page-item-image');
+    item.addEventListener('mouseover', function (e) {
+        e.preventDefault(); // Prevent the link from navigating
+
+        // Get the featured image URL from the link's href attribute
+        const featuredImage = this.getAttribute('data-featured-image');
+
+        // Select the image element and change its src attribute
+        mainImage.classList.add('close-fade-out')
+        mainImage.classList.remove('fadein');
+        setTimeout(() => {
+            mainImage.classList.remove('close-fade-out')
+            mainImage.src = featuredImage;
+            mainImage.classList.add('fadein');
+        }, 100);
+    });
+});

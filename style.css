@@ -1090,6 +1090,11 @@ footer{
     animation-fill-mode: forwards;
 }
 
+.fadeOut {
+    animation: fadeOut 0.9s 1;
+    animation-fill-mode: forwards;
+}
+
 /* CUSTOM FIELDS CLASSES
 -------------------------------------------------------------- */
 .background-light {

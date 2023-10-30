@@ -1,6 +1,8 @@
 <?php
 // Get the slug from the URL
 $slug = basename(get_permalink());
+console_log(get_permalink());
+console_log($slug);
 
 // Set up the query to retrieve the gallery post based on the slug
 $query = new WP_Query(array(

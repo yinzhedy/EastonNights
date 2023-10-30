@@ -206,6 +206,27 @@ function add_background_color_class($secondary = false) {
     }
 }
 
+function add_featured_image_to_menu_items($atts, $item, $args) {
+    if ($args->theme_location === 'homepage-center' && $item->object == 'gallery') {
+        $permalink = $item->url;
+        $slug = basename($permalink);
+        $query = new WP_Query(array(
+            'post_type' => 'gallery',
+            'name' => $slug
+        ));
+        if ($query->have_posts()) {
+            while ($query->have_posts()) : $query->the_post();
+                $featured_image_url = get_the_post_thumbnail_url();
+                console_log($featured_image_url);
+                $atts['data-featured-image'] = esc_url($featured_image_url);
+            endwhile;
+            wp_reset_postdata(); // Reset the post data
+        }
+    }
+    return $atts;
+}
+add_filter('nav_menu_link_attributes', 'add_featured_image_to_menu_items', 10, 3);
+
 function console_log($output, $with_script_tags = true) {
     $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .');';
     if ($with_script_tags) {
