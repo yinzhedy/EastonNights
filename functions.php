@@ -140,7 +140,9 @@ function eastonnights_theme_customize_register($wp_customize) {
         'section' => 'custom_style_options',
         'type' => 'select',
         'choices' => array(
-            'Nunito Sans, sans-serif' => 'Nunito Font',
+            'Nunito Sans, sans-serif' => 'Nunito',
+            'Moon Light, sans-serif' => 'Moon Light',
+            'Moon Bold, sans-serif' => 'Moon Bold',
             '"Times New Roman", Times, serif' => 'Times New Roman',
         ),
     ));

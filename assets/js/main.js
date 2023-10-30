@@ -8,6 +8,8 @@ const footerItem = document.querySelector('.footer-item')
 const footerCopyright = document.querySelector('#footer-copyright')
 const mobileFullScreenMenu = document.querySelector('.mobile-full-screen-menu')
 const headerMenuLogo = document.querySelector('#sub-grid-header-item-logo')
+const galleryImages = document.querySelectorAll('.inner-sub-grid-main-item-image')
+const centerMenuItems = document.querySelectorAll('.center-menu li a');
 
 //function loading in menu items via fade in animation
 function fadeInMenuItems() {
@@ -52,10 +54,8 @@ headerMenuIcon.addEventListener('click', () => {
     }
 });
 
-//change pages with center menu's background image on menu item hover
-const galleryItems = document.querySelectorAll('.center-menu li a');
-
-galleryItems.forEach(item => {
+//change front page image to gallery featured image associated w center menu item attribute
+centerMenuItems.forEach(item => {
     const mainImage = document.getElementById('sub-grid-main-front-page-item-image');
     item.addEventListener('mouseover', function (e) {
         e.preventDefault(); // Prevent the link from navigating
@@ -73,3 +73,10 @@ galleryItems.forEach(item => {
         }, 100);
     });
 });
+
+//gallery image on click -> fullscreen image view
+galleryImages.forEach(image => {
+    image.addEventListener('mouseover', function(e) {
+
+    })
+})
