@@ -149,7 +149,7 @@ body {
                 width: 100%;
                 display: grid;
                 grid-template-columns: 1fr 16fr 1fr;
-                grid-template-rows: 65px 16fr 65px;
+                grid-template-rows: 1fr 16fr 1fr;
                 grid-template-areas:        "top-l     top-m       top-r"
                                         "left       center        right"
                                         "bottom-l   bottom-m    bottom-r";
@@ -368,7 +368,7 @@ body {
                 width: 100%;
                 display: grid;
                 grid-template-columns: 1fr 16fr 1fr;
-                grid-template-rows: 1fr 16fr 1fr;
+                grid-template-rows: 65px 16fr 65px;
                 grid-template-areas:    "top-l     top-m       top-r"
                                         "left       center        right"
                                         "bottom-l   bottom-m    bottom-r";
@@ -526,7 +526,7 @@ body {
                 width: 100%;
                 display: grid;
                 grid-template-columns: 1fr 16fr 1fr;
-                grid-template-rows: 1fr 16fr 1fr;
+                grid-template-rows: 65px 16fr 65px;
                 grid-template-areas:    "top-l     top-m       top-r"
                                         "left       center        right"
                                         "bottom-l   bottom-m    bottom-r";
@@ -658,7 +658,7 @@ body {
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 16fr 1fr;
-        grid-template-rows: 1fr 16fr 1fr;
+        grid-template-rows: 65px 16fr 65px;
         grid-template-areas:    "top-l     top-m       top-r"
                                 "left       center        right"
                                 "bottom-l   bottom-m    bottom-r";
@@ -789,7 +789,7 @@ body {
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 16fr 1fr;
-        grid-template-rows: 1fr 16fr 1fr;
+        grid-template-rows: 65px 16fr 65px;
         grid-template-areas:    "top-l     top-m       top-r"
                                 "left       center        right"
                                 "bottom-l   bottom-m    bottom-r";
