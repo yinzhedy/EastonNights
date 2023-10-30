@@ -10,9 +10,19 @@ $query = new WP_Query(array(
 
 if ($query->have_posts()) :
     while ($query->have_posts()) : $query->the_post();
+
+    // Get the post ID
+    $post_id = get_the_ID();
+
+    // Get the background_color custom field
+    $background_color = get_post_meta($post_id, 'background_color', true);
+
+    // Log the background color to the browser console
+    console_log(get_post_meta($post_id));
+    console_log($background_color);
 ?>
     <div id="sub-grid-main-item-title"><?php the_title(); ?></div>
-    <div id="sub-grid-main-item-gallery">
+    <div id="sub-grid-main-item-gallery" class="<?php add_background_color_class(); ?>">
         <?php
         // Get the post content
         $post_content = get_the_content();

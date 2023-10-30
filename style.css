@@ -1078,3 +1078,10 @@ footer{
 
 /* CUSTOMIZER CLASSES
 -------------------------------------------------------------- */
+.background-light {
+    background-color: white;
+}
+
+.background-dark {
+    background-color: var(--off_black);
+}
