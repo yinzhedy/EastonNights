@@ -19,7 +19,7 @@
                             'menu' => 'homepage-center',
                             'container' => '',
                             'theme_location' => 'homepage-center',
-                            'items_wrap' => '<ul id="inner-sub-grid-main-front-page-item-menu" class="menu center-menu"  >%3$s</ul>'
+                            'items_wrap' => '<ul id="inner-sub-grid-main-front-page-item-menu" class="menu center-menu fade-items"  >%3$s</ul>'
                         )
                     );
                 ?>

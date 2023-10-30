@@ -1080,6 +1080,16 @@ footer{
     animation: fadeOut .4s ease forwards;
 }
 
+.fade-items li {
+    transition: 2s all ease-in-out;
+    opacity: 0;
+}
+
+.fadein {
+    animation: fadeIn 0.9s 1;
+    animation-fill-mode: forwards;
+}
+
 /* CUSTOM FIELDS CLASSES
 -------------------------------------------------------------- */
 .background-light {

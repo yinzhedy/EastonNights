@@ -9,6 +9,21 @@ const footerCopyright = document.querySelector('#footer-copyright')
 const mobileFullScreenMenu = document.querySelector('.mobile-full-screen-menu')
 const headerMenuLogo = document.querySelector('#sub-grid-header-item-logo')
 
+//function loading in menu items via fade in animation
+function fadeInMenuItems() {
+    let menuItems = document.querySelectorAll('.fade-items > *');
+    for (let i = 0; i < menuItems.length; ++i) {
+        fadeIn(menuItems[i], i * 150)
+        }
+    function fadeIn (menuItem, delay) {
+        setTimeout(() => {
+            menuItem.classList.add('fadein')
+        }, delay)
+        }
+}
+fadeInMenuItems()
+
+//Click event listener for mobile menu icon - control animations/styles 
 headerMenuIcon.addEventListener('click', () => {
     console.log('click');
     headerMenuIcon.classList.toggle('open'); //trigger icon animation
