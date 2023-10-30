@@ -216,7 +216,7 @@ function add_featured_image_to_menu_items($atts, $item, $args) {
         ));
         if ($query->have_posts()) {
             while ($query->have_posts()) : $query->the_post();
-                $featured_image_url = get_the_post_thumbnail_url();
+                $featured_image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
                 console_log($featured_image_url);
                 $atts['data-featured-image'] = esc_url($featured_image_url);
             endwhile;

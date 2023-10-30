@@ -797,7 +797,7 @@ body {
             }
                 #sub-grid-main-front-page-item-image {
                 width: 100%;
-                max-width: 1200px;
+                max-width: 1350px;
                 justify-self:center;
                 z-index: 1;
                 grid-row: center-start / center-end;
