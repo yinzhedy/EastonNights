@@ -103,6 +103,19 @@ function add_gallery_custom_fields() {
     );
 }
 
+function add_page_custom_fields() {
+    add_meta_box(
+        'page_layout',
+        'Page Layout',
+        'display_page_layout_custom_field',
+        'page',
+        'normal',
+        'default'
+    );
+}
+
+add_action('add_meta_boxes', 'add_page_custom_fields');
+
 function display_gallery_background_color($post) {
     $background_color = get_post_meta($post->ID, 'background_color', true);
     ?>
@@ -114,15 +127,35 @@ function display_gallery_background_color($post) {
     <?php
 }
 
+function display_page_layout_custom_field($post) {
+    $page_layout = get_post_meta($post->ID, 'page_layout', true);
+    ?>
+    <label for="page_layout">Page Layout:</label>
+    <select name="page_layout" id="page_layout">
+        <option value="default" <?php selected($page_layout, 'default'); ?>>Default</option>
+        <option value="video_player" <?php selected($page_layout, 'video_player'); ?>>Video Player</option>
+    </select>
+    <?php
+}
+
 function save_gallery_custom_fields($post_id) {
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
     if (isset($_POST['background_color'])) {
         update_post_meta($post_id, 'background_color', sanitize_text_field($_POST['background_color']));
     }
 }
-
 add_action('add_meta_boxes', 'add_gallery_custom_fields');
 add_action('save_post_gallery', 'save_gallery_custom_fields');
+
+function save_page_layout_custom_field($post_id) {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (isset($_POST['page_layout'])) {
+        update_post_meta($post_id, 'page_layout', sanitize_text_field($_POST['page_layout']));
+    }
+}
+
+add_action('save_post_page', 'save_page_layout_custom_field');
+
 
 function eastonnights_theme_customize_register($wp_customize) {
     // Add section for custom font selection

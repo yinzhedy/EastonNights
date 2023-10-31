@@ -148,7 +148,22 @@ body {
                 height: auto;
 
             }
-
+    #inner-sub-grid-main-container-video-gallery {
+        height: 100%;
+        width: 100%;
+        display:grid;
+        grid-template-columns: 1fr 16fr 1fr ;
+        grid-template-rows: 1fr 12fr 4fr 1fr;
+        grid-template-areas:    "top-l      top-m       top-r"
+                                "middle-l   middle      middle-r"
+                                "middle-l   middle      middle-r"
+                                "bottom-l   bottom-m    bottom-r";
+    }
+        #inner-sub-grid-main-container-video-gallery > .wp-video {
+            width: 100%;
+            justify-self: center;
+            grid-area:middle;
+        }
 
 /*GRID - EXTRA SMALL DEVICES (phones tablets)*/
 @media screen and (max-width:600px) {
