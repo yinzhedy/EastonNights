@@ -306,18 +306,33 @@ function eastonnights_theme_customize_register($wp_customize) {
         ),
     ));
 
-    $wp_customize->add_setting('page_background_color', array(
-        'default' => 'black',
+    $wp_customize->add_setting('link_decoration', array(
+        'default' => 'none',
     ));
 
-    $wp_customize->add_control('page_background_color', array(
-        'label' => 'Select Background Color for Current Page',
+    $wp_customize->add_control('link_decoration', array(
+        'label' => 'Link Decoration',
         'section' => 'custom_style_options',
         'type' => 'radio',
         'choices' => array(
-            'light' => 'Light',
-            'dark' => 'Dark',
+            'none' => 'None',
+            'underline' => 'Underline',
         ),
+    ));
+
+    $wp_customize->add_setting('link_text_color', array(
+        'default' => 'inherit',
+        'sanitize_callback' => 'sanitize_hex_color', // For custom color
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        'link_text_color', 
+        array(
+            'label' => 'Custom Link Text Color',
+            'section' => 'custom_style_options',
+            'settings' => 'link_text_color',
+        )
     ));
 
 }
@@ -335,6 +350,11 @@ function eastonnights_theme_customize_css() {
         /* Center Menu */
         .center-menu {
             font-family: <?php echo get_theme_mod('center_menu_font', 'Nunito Sans, sans-serif'); ?>;
+        }
+        /* Links */
+        a {
+            color: <?php echo get_theme_mod('link_text_color', 'inherit'); ?>;
+            text-decoration: <?php echo get_theme_mod('link_decoration', 'none'); ?>;
         }
     </style>
     <?php
