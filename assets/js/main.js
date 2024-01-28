@@ -102,11 +102,11 @@ LightMode();
 
 //modal 
 function openModal(src) {
-    var modal = document.getElementById("image-viewer");
+    var modal = document.getElementById("sub-grid-item-image-viewer");
     var modalImg = document.getElementById("img01");
     var captionText = document.getElementsByClassName("caption")[0];
 
-    modal.style.display = "block";
+    modal.style.display = "grid";
     modalImg.src = src;
     captionText.innerHTML = ""; // You can set this to an appropriate caption if available
 

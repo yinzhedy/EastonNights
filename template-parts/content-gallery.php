@@ -37,8 +37,7 @@ if ($query->have_posts()) :
         </div>
 
         <!-- Modal Structure -->
-        <div id="sub-grid-main-item-modal">
-            <div id="image-viewer" class="modal">
+            <div id="sub-grid-item-image-viewer" class="modal">
             <span class="close-modal">&times;</span>
             <img class="modal-content" id="img01">
             <div class="caption"></div>
@@ -46,7 +45,6 @@ if ($query->have_posts()) :
             <a class="prev" onclick="changeImage(-1)">&#10094;</a>
             <a class="next" onclick="changeImage(1)">&#10095;</a>
             </div>
-        </div>
 
         <?php
     endwhile;
