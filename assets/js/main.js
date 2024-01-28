@@ -99,3 +99,38 @@ function LightMode() {
 }
 
 LightMode();
+
+//modal 
+function openModal(src) {
+    var modal = document.getElementById("image-viewer");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementsByClassName("caption")[0];
+
+    modal.style.display = "block";
+    modalImg.src = src;
+    captionText.innerHTML = ""; // You can set this to an appropriate caption if available
+
+    // Close Modal Logic
+    var span = document.getElementsByClassName("close-modal")[0];
+    span.onclick = function() { 
+        modal.style.display = "none";
+    }
+    //Find index of current image
+    currentIndex = images.indexOf(src);
+}
+
+function changeImage(step) {
+    currentIndex += step;
+    if (currentIndex >= images.length) {
+        currentIndex = 0;
+    } else if (currentIndex < 0) {
+        currentIndex = images.length - 1;
+    }
+
+    modalImg.src = images[currentIndex];
+}
+
+//Initialize images array
+document.querySelectorAll(".inner-sub-grid-main-item-image").forEach(item => {
+    images.push(item.src);
+});

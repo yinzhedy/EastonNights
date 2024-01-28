@@ -24,7 +24,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Your custom JavaScript file -->
-    <script src="assets/main.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/localized.js"></script>
     <?php
     wp_head();
     ?>
