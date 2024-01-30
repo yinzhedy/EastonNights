@@ -16,8 +16,33 @@ const centerMenuItems = document.querySelectorAll('.center-menu li a');
 
 const footerItem = document.querySelector('.footer-item')
 const footerCopyright = document.querySelector('#footer-copyright')
+const frontPageMainImg = document.getElementById('sub-grid-main-front-page-item-image')
+
+/****************************************************************************** /
+    Image Protection
+    - preventative measures 
+    -- prevent casual visitors from inspecting and saving images from the site
+    -- whole site security can be applied via custom setting disable_inspect
+*******************************************************************************/
+
+//Disable right-click context menu on images - prevent saving of images
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.nodeName === 'IMG') {
+        e.preventDefault();
+    }
+}, false);
+
+//Disable drag and drop - dragging of images onto desktops or other applications
+document.addEventListener('dragstart', function(e) {
+    if (e.target.nodeName === 'IMG') {
+        e.preventDefault();
+    }
+}, false);
 
 
+/****************************************************************************** /
+    Animations
+*******************************************************************************/
 
 //function loading in menu items via fade in animation
 function fadeInMenuItems() {
@@ -64,30 +89,26 @@ headerMenuIcon.addEventListener('click', () => {
 
 //change front page image to gallery featured image associated w center menu item attribute
 centerMenuItems.forEach(item => {
-    const mainImage = document.getElementById('sub-grid-main-front-page-item-image');
     item.addEventListener('mouseover', function (e) {
         e.preventDefault(); // Prevent the link from navigating
 
         // Get the featured image URL from the link's href attribute
         const featuredImage = this.getAttribute('data-featured-image');
 
-        // Select the image element and change its src attribute
-        mainImage.classList.add('close-fade-out')
-        mainImage.classList.remove('fadein');
+        // Fade the image in and out
+        frontPageMainImg.classList.add('close-fade-out')
+        frontPageMainImg.classList.remove('fadein');
         setTimeout(() => {
-            mainImage.classList.remove('close-fade-out')
-            mainImage.src = featuredImage;
-            mainImage.classList.add('fadein');
+            frontPageMainImg.classList.remove('close-fade-out')
+            frontPageMainImg.src = featuredImage;
+            frontPageMainImg.classList.add('fadein');
         }, 100);
     });
 });
 
-//gallery image on click -> fullscreen image view
-galleryImages.forEach(image => {
-    image.addEventListener('mouseover', function(e) {
-
-    })
-})
+/****************************************************************************** /
+    Color Modes / Themes
+*******************************************************************************/
 
 
 function LightMode() {
@@ -100,8 +121,12 @@ function LightMode() {
 
 LightMode();
 
-//modal 
-let modalImages = [];
+/****************************************************************************** /
+    Gallery Page Modal / Theatre mode
+*******************************************************************************/
+
+let modalImages = []; // array container for high res urls for gallery images
+
 function openModal(imageElement) {
     var modal = document.getElementById("sub-grid-item-image-viewer");
     var modalImg = document.getElementById("img01");
@@ -130,8 +155,9 @@ function openModal(imageElement) {
     currentIndexGallery = modalImages.indexOf(highResSrc);
 }
 
-let currentIndexGallery = 0; // declare this globally
+let currentIndexGallery = 0; //  Tracks current galleryImages index while in theatre/modal mode
 
+//Pagination - change image via pagination 
 function changeImage(step) {
     if (!modalImages.length) return; // return if images array is empty
 

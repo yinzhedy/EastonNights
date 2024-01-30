@@ -9,21 +9,6 @@ function eastonnights_theme_support(){
 add_action('after_setup_theme' , 'eastonnights_theme_support');
 
 
-function eastonnights_menus(){
-
-    $locations = array(
-        'homepage-header' => "Homepage Header Navigation Menu",
-        'homepage-center' => "Homepage Center Navigation Menu",
-        'mobile-homepage-full-screen' => "Mobile Homepage Full Screen Navigation Menu",
-        'easton-nights-header' => 'Easton Nights Homepage Header Navigation Menu',
-        'easton-nights-center' => 'Easton Nights Homepage Center Navigation Menu',
-        'footer' => "Footer Menu Items"
-
-    );
-
-    register_nav_menus($locations);
-}
-
 add_action('init' , 'eastonnights_menus');
 
 function eastonnights_register_styles(){
@@ -53,6 +38,11 @@ function eastonnights_register_scripts(){
     wp_enqueue_script('eastonnights-localized-script', get_template_directory_uri() . '/assets/js/localized.js', array('jquery'), $version, true);
     // Localize the script with the data
     wp_localize_script('eastonnights-localized-script', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+    
+    // If custom setting disable_inspect is selected, enqueue corresponding js file
+    if (get_option('disable_inspect', 'no') === 'yes') {
+        wp_enqueue_script('disable-inspect-script', get_template_directory_uri() . '/assets/js/disable-inspect.js', array(), null, true);
+    }
 }
 
 add_action('wp_enqueue_scripts', 'eastonnights_register_scripts');
@@ -73,6 +63,44 @@ function eastonnights_widget_areas(){
 };
 
 add_action('widgets_init' , 'eastonnights_widget_areas');
+
+//CUSTOM SETTINGS
+//****************************************************************************************************************************** */
+//Register settings
+function register_my_custom_settings() {
+    // Add settings to general settings section
+    register_setting('general', 'disable_inspect');
+}
+add_action('admin_init', 'register_my_custom_settings');
+
+//Add field to general settings page
+function disable_inspect_custom_setting_field() {
+    $value = get_option('disable_inspect', 'no'); // Retrieves the setting value, default is 'no'.
+    echo '<input type="checkbox" id="disable_inspect" name="disable_inspect" value="yes"' . checked($value, 'yes', false) . '/>';
+    echo '<label for="disable_inspect">Disable Right-Click and Drag for Site</label>';
+}
+
+add_action('admin_menu', function() {
+    add_settings_field('disable_inspect', 'Site Protection', 'disable_inspect_custom_setting_field', 'general');
+});
+
+// MENUS
+//****************************************************************************************************************************** */
+
+function eastonnights_menus(){
+
+    $locations = array(
+        'homepage-header' => "Homepage Header Navigation Menu",
+        'homepage-center' => "Homepage Center Navigation Menu",
+        'mobile-homepage-full-screen' => "Mobile Homepage Full Screen Navigation Menu",
+        'easton-nights-header' => 'Easton Nights Homepage Header Navigation Menu',
+        'easton-nights-center' => 'Easton Nights Homepage Center Navigation Menu',
+        'footer' => "Footer Menu Items"
+
+    );
+
+    register_nav_menus($locations);
+}
 
 function get_menu_items_by_registered_slug($menu_slug) {
     $menu_items = array();
