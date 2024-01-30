@@ -101,6 +101,7 @@ function LightMode() {
 LightMode();
 
 //modal 
+let modalImages = [];
 function openModal(imageElement) {
     var modal = document.getElementById("sub-grid-item-image-viewer");
     var modalImg = document.getElementById("img01");
@@ -118,22 +119,29 @@ function openModal(imageElement) {
     span.onclick = function() { 
         modal.style.display = "none";
     }
+
+    // Reset and populate the images array
+    modalImages = [];
+    document.querySelectorAll(".inner-sub-grid-main-item-image").forEach(item => {
+        modalImages.push(item.getAttribute('data-high-res')); // use high-res image URLs
+    });
+
     //Find index of current image
-    currentIndex = images.indexOf(src);
+    currentIndexGallery = modalImages.indexOf(highResSrc);
 }
+
+let currentIndexGallery = 0; // declare this globally
 
 function changeImage(step) {
-    currentIndex += step;
-    if (currentIndex >= images.length) {
-        currentIndex = 0;
-    } else if (currentIndex < 0) {
-        currentIndex = images.length - 1;
+    if (!modalImages.length) return; // return if images array is empty
+
+    currentIndexGallery += step;
+    if (currentIndexGallery >= modalImages.length) {
+        currentIndexGallery = 0;
+    } else if (currentIndexGallery < 0) {
+        currentIndexGallery = modalImages.length - 1;
     }
 
-    modalImg.src = images[currentIndex];
+    var modalImg = document.getElementById("img01");
+    modalImg.src = modalImages[currentIndexGallery];
 }
-
-//Initialize images array
-document.querySelectorAll(".inner-sub-grid-main-item-image").forEach(item => {
-    images.push(item.src);
-});
