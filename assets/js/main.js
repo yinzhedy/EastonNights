@@ -101,14 +101,17 @@ function LightMode() {
 LightMode();
 
 //modal 
-function openModal(src) {
+function openModal(imageElement) {
     var modal = document.getElementById("sub-grid-item-image-viewer");
     var modalImg = document.getElementById("img01");
     var captionText = document.getElementsByClassName("caption")[0];
 
     modal.style.display = "grid";
-    modalImg.src = src;
-    captionText.innerHTML = ""; // You can set this to an appropriate caption if available
+    
+    // Use the high-res URL from the data attribute
+    var highResSrc = imageElement.getAttribute('data-high-res');
+    modalImg.src = highResSrc;
+    captionText.innerHTML = ""; // image caption
 
     // Close Modal Logic
     var span = document.getElementsByClassName("close-modal")[0];

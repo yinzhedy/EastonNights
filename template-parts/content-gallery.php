@@ -21,16 +21,20 @@ if ($query->have_posts()) :
             // Get the post content
             $post_content = get_the_content();
 
-            // Use a regular expression to extract image URLs
-            $pattern = '/<img [^>]*src=["\']([^"\']+)["\'][^>]*>/i';
+            // Use a regular expression to extract image tags
+            $pattern = '/<img [^>]*wp-image-(\d+)[^>]*>/i';
             preg_match_all($pattern, $post_content, $matches);
 
             if (!empty($matches[1])) {
                 echo '<div id="inner-sub-grid-main-container">';
-                foreach ($matches[1] as $image_url) {
+                foreach ($matches[1] as $image_id) {
+                    // Get low-res and high-res image URLs for each image ID
+                    $low_res_image_url = wp_get_attachment_image_src($image_id, 'medium')[0]; // change 'medium' to desired low-res size
+                    $high_res_image_url = wp_get_attachment_image_src($image_id, 'full')[0]; // 'full' for high-res
+
                     // Display each image with custom modal functionality
-                    echo '<img class="inner-sub-grid-main-item-image" src="' . esc_url($image_url) . '" alt="" onclick="openModal(this.src)">';
-                }
+                    echo '<img class="inner-sub-grid-main-item-image" src="' . esc_url($low_res_image_url) . '" data-high-res="' . esc_url($high_res_image_url) . '" alt="" onclick="openModal(this)">';
+                    }
                 echo '</div>';
             }
             ?>
