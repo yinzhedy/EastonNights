@@ -31,9 +31,11 @@ if ($query->have_posts()) :
                     // Get low-res and high-res image URLs for each image ID
                     $low_res_image_url = wp_get_attachment_image_src($image_id, 'medium')[0]; // change 'medium' to desired low-res size
                     $high_res_image_url = wp_get_attachment_image_src($image_id, 'full')[0]; // 'full' for high-res
+                    $image_title = get_the_title($image_id); // Get the image title
+                    $image_description = get_post($image_id)->post_content; // Get the image description
 
-                    // Display each image with custom modal functionality
-                    echo '<img class="inner-sub-grid-main-item-image" src="' . esc_url($low_res_image_url) . '" data-high-res="' . esc_url($high_res_image_url) . '" alt="" onclick="openModal(this)">';
+                    // Display each image with custom modal functionality, description, & title attribute
+                    echo '<img class="inner-sub-grid-main-item-image" src="' . esc_url($low_res_image_url) . '" data-high-res="' . esc_url($high_res_image_url) . '" title="' . esc_attr($image_title) . '" data-description="' . esc_attr($image_description) . '" alt="" onclick="openModal(this)">';
                     }
                 echo '</div>';
             }
@@ -44,6 +46,10 @@ if ($query->have_posts()) :
             <div id="sub-grid-item-image-viewer" class="modal">
             <span class="close-modal">&times;</span>
             <img class="modal-content" id="img01">
+            <div class="modal-text">
+                <p class="modal-title"></p>
+                <p class="modal-description"></p>
+            </div>
             <div class="caption"></div>
             <!-- Navigation Buttons -->
             <a class="prev" onclick="changeImage(-1)">&#10094;</a>

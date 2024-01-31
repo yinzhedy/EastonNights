@@ -131,13 +131,18 @@ function openModal(imageElement) {
     var modal = document.getElementById("sub-grid-item-image-viewer");
     var modalImg = document.getElementById("img01");
     var captionText = document.getElementsByClassName("caption")[0];
+    var modalTitle = document.querySelector(".modal-title"); // Get the modal title element
+    var modalDescription = document.querySelector(".modal-description"); // Get the modal description element
 
     modal.style.display = "grid";
     
     // Use the high-res URL from the data attribute
     var highResSrc = imageElement.getAttribute('data-high-res');
+    var imageTitle = imageElement.getAttribute('title'); // Get the title attribute
+    var imageDescription = imageElement.getAttribute('data-description'); // Get the description attribute
     modalImg.src = highResSrc;
-    captionText.innerHTML = ""; // image caption
+    modalDescription.textContent = imageDescription; // Set the modal description
+    modalTitle.textContent = imageTitle; // Set the modal title
 
     // Close Modal Logic
     var span = document.getElementsByClassName("close-modal")[0];
@@ -148,7 +153,12 @@ function openModal(imageElement) {
     // Reset and populate the images array
     modalImages = [];
     document.querySelectorAll(".inner-sub-grid-main-item-image").forEach(item => {
-        modalImages.push(item.getAttribute('data-high-res')); // use high-res image URLs
+        modalImages.push({
+            url: item.getAttribute('data-high-res'), //get high res img
+            title: item.getAttribute('title'), //get title
+            description: item.getAttribute('data-description') //get description
+        });
+        
     });
 
     //Find index of current image
@@ -157,7 +167,7 @@ function openModal(imageElement) {
 
 let currentIndexGallery = 0; //  Tracks current galleryImages index while in theatre/modal mode
 
-//Pagination - change image via pagination 
+//Pagination - change image src/descript/title via pagination 
 function changeImage(step) {
     if (!modalImages.length) return; // return if images array is empty
 
@@ -169,5 +179,11 @@ function changeImage(step) {
     }
 
     var modalImg = document.getElementById("img01");
-    modalImg.src = modalImages[currentIndexGallery];
+    var modalTitle = document.querySelector(".modal-title");
+    var modalDescription = document.querySelector(".modal-description");
+
+    var currentImage = modalImages[currentIndexGallery];
+    modalImg.src = currentImage.url; //update img src
+    modalTitle.textContent = currentImage.title; // Update the modal title
+    modalDescription.textContent = currentImage.description; // Update the modal description
 }
