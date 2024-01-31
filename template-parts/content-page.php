@@ -4,7 +4,6 @@
 
 <article 
     style="background-image: url('<?php $featured_image ?>');">
-    <div>Hello</div>
     
     <?php the_content(); ?>
 </article>

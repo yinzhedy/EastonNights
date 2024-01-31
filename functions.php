@@ -113,20 +113,18 @@ function get_menu_items_by_registered_slug($menu_slug) {
 }
 
 function add_featured_image_to_menu_items($atts, $item, $args) {
-    if ($args->theme_location === 'homepage-center' && $item->object == 'gallery') {
+    // Check if it's the 'homepage-center' menu or a page with 'home_page' layout
+    if ($args->theme_location === 'homepage-center' || (is_page() && get_post_meta(get_the_ID(), 'page_layout', true) === 'home_page')) {
         $permalink = $item->url;
-        $slug = basename($permalink);
-        $query = new WP_Query(array(
-            'post_type' => 'gallery',
-            'name' => $slug
-        ));
-        if ($query->have_posts()) {
-            while ($query->have_posts()) : $query->the_post();
-                $featured_image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
-                console_log($featured_image_url);
+        $post_id = url_to_postid($permalink); // Get the post ID from the URL
+
+        // Check if a valid post ID was found
+        if ($post_id) {
+            $featured_image_url = get_the_post_thumbnail_url($post_id, 'large');
+            if ($featured_image_url) {
+                // Add the featured image URL as a data attribute
                 $atts['data-featured-image'] = esc_url($featured_image_url);
-            endwhile;
-            wp_reset_postdata(); // Reset the post data
+            }
         }
     }
     return $atts;
@@ -207,6 +205,15 @@ function add_page_custom_fields() {
         'normal',
         'default'
     );
+
+    add_meta_box(
+        'home_page_menu_select',
+        'Home Page Menu Selection',
+        'display_home_page_menu_field',
+        'page',
+        'normal',
+        'default'
+    );
 }
 
 add_action('add_meta_boxes', 'add_page_custom_fields');
@@ -220,6 +227,7 @@ function display_page_layout_custom_field($post) {
         <option value="default" <?php selected($page_layout, 'default'); ?>>Default</option>
         <option value="video_player" <?php selected($page_layout, 'video_player'); ?>>Video Player</option>
         <option value="contact_form" <?php selected($page_layout, 'contact_form'); ?>>Contact Form</option>
+        <option value="home_page" <?php selected($page_layout, 'home_page'); ?>>Home Page Layout</option>
     </select>
 
     <?php
@@ -289,6 +297,41 @@ function save_contact_form_email_field($post_id) {
 }
 
 add_action('save_post_page', 'save_contact_form_email_field');
+
+function display_home_page_menu_field($post) {
+    // Check if the current layout is set to "Home Page"
+    $page_layout = get_post_meta($post->ID, 'page_layout', true);
+
+    if ($page_layout === 'home_page') {
+        // Fetch the current selected menu for the page
+        $selected_home_page_menu = get_post_meta($post->ID, 'selected_home_page_menu', true);
+
+        // Get all available menus
+        $menus = wp_get_nav_menus();
+
+        echo '<label for="selected_home_page_menu">Select A Menu for this Page:</label>';
+        echo '<select name="selected_home_page_menu" id="selected_home_page_menu">';
+        echo '<option value="">Select a Menu</option>'; // Optional: Default option
+
+        foreach ($menus as $menu) {
+            $selected = selected($selected_home_page_menu, $menu->term_id, false);
+            echo sprintf('<option value="%s"%s>%s</option>', esc_attr($menu->term_id), $selected, esc_html($menu->name));
+        }
+
+        echo '</select>';
+    }
+}
+
+function save_home_page_menu_selection($post_id) {
+    if (array_key_exists('selected_home_page_menu', $_POST)) {
+        update_post_meta(
+            $post_id,
+            'selected_home_page_menu',
+            $_POST['selected_home_page_menu']
+        );
+    }
+}
+add_action('save_post', 'save_home_page_menu_selection');
 
 // CUSTOMIZER
 //****************************************************************************************************************************** */

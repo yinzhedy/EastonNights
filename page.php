@@ -3,7 +3,17 @@
 get_header();
 ?>
 
-
+<?php
+if( have_posts() ) {
+    while( have_posts() ) {
+        the_post();
+        $page_layout = get_page_layout();
+        if ($page_layout === 'home_page') {
+            get_template_part('template-parts/content', 'home-page');
+        }
+    }
+}
+?>
 
 <main id='grid-item-main'>
     <div id='sub-grid-main-container'>
