@@ -35,7 +35,7 @@ if ($query->have_posts()) :
                     $image_description = get_post($image_id)->post_content; // Get the image description
 
                     // Display each image with custom modal functionality, description, & title attribute
-                    echo '<img class="inner-sub-grid-main-item-image" src="' . esc_url($low_res_image_url) . '" data-high-res="' . esc_url($high_res_image_url) . '" title="' . esc_attr($image_title) . '" data-description="' . esc_attr($image_description) . '" alt="" onclick="openModal(this)">';
+                    echo '<img class="inner-sub-grid-main-item-image" src="' . esc_url($low_res_image_url) . '" data-high-res="' . esc_url($high_res_image_url) . '" title="' . esc_attr($image_title) . '" data-description="' . esc_attr($image_description) . '" alt="" onclick="openModal(this, \'' . esc_attr($background_color) . '\')">';
                     }
                 echo '</div>';
             }

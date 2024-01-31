@@ -127,10 +127,9 @@ LightMode();
 
 let modalImages = []; // array container for high res urls for gallery images
 
-function openModal(imageElement) {
+function openModal(imageElement, backgroundColor) {
     var modal = document.getElementById("sub-grid-item-image-viewer");
     var modalImg = document.getElementById("img01");
-    var captionText = document.getElementsByClassName("caption")[0];
     var modalTitle = document.querySelector(".modal-title"); // Get the modal title element
     var modalDescription = document.querySelector(".modal-description"); // Get the modal description element
 
@@ -159,6 +158,19 @@ function openModal(imageElement) {
             description: item.getAttribute('data-description') //get description
         });
         
+    // Set modal background/span/text color based on gallery post's backgroundColor custom field 
+    if (backgroundColor === 'light') {
+
+        modal.style.backgroundColor = 'rgba(255, 255, 255, 0.9)'; // Light background
+        modalTitle.style.color = 'black';
+        modalDescription.style.color = 'black';
+        span.style.color = 'black';
+    } else {
+        modal.style.backgroundColor = 'rgba(0, 0, 0, 0.9)'; // Dark background (default)
+        modalTitle.style.color = 'white';
+        modalDescription.style.color = 'white';
+        span.style.color = 'white';
+    }
     });
 
     //Find index of current image
