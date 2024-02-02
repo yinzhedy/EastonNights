@@ -132,6 +132,8 @@ function openModal(imageElement, backgroundColor) {
     var modalImg = document.getElementById("img01");
     var modalTitle = document.querySelector(".modal-title"); // Get the modal title element
     var modalDescription = document.querySelector(".modal-description"); // Get the modal description element
+    var prevButton = document.querySelector(".prev");
+    var nextButton = document.querySelector(".next");
 
     modal.style.display = "grid";
     
@@ -142,6 +144,10 @@ function openModal(imageElement, backgroundColor) {
     modalImg.src = highResSrc;
     modalDescription.textContent = imageDescription; // Set the modal description
     modalTitle.textContent = imageTitle; // Set the modal title
+
+    var paginationColor = backgroundColor === 'light' ? 'black' : 'white'; // Choose color based on theme
+    prevButton.style.color = paginationColor;
+    nextButton.style.color = paginationColor;
 
     // Close Modal Logic
     var span = document.getElementsByClassName("close-modal")[0];
