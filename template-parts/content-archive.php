@@ -1,3 +1,4 @@
+
 <article class='archive-post'>
 
     <img class='post-thumbnail' src="<?php the_post_thumbnail_url('large'); ?>"/>
