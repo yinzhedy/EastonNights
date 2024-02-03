@@ -32,7 +32,7 @@ function eastonnights_register_scripts(){
     $version = wp_get_theme()->get('Version');
     wp_enqueue_script('eastonnights-script' , get_template_directory_uri()."/assets/js/main.js" , array() , $version , true );
     wp_enqueue_script('eastonnights-customizer-script', get_template_directory_uri() . '/assets/js/customizer.js', array('jquery', 'customize-preview'), $version , true);
-    //Equeue lightbox2 javascript
+    //Enqueue lightbox2 javascript
     wp_enqueue_script('lightbox2-js', get_template_directory_uri() . '/assets/js/lightbox/lightbox.min.js', array('jquery'), '', true);
     // Enqueue the script that includes the localized object
     wp_enqueue_script('eastonnights-localized-script', get_template_directory_uri() . '/assets/js/localized.js', array('jquery'), $version, true);
@@ -43,6 +43,8 @@ function eastonnights_register_scripts(){
     if (get_option('disable_inspect', 'no') === 'yes') {
         wp_enqueue_script('disable-inspect-script', get_template_directory_uri() . '/assets/js/disable-inspect.js', array(), null, true);
     }
+    //Enqeue script for back to top feature
+    wp_enqueue_script('back-to-top-script', get_template_directory_uri() . '/assets/js/back-to-top.js', array(), null, true);
 }
 
 add_action('wp_enqueue_scripts', 'eastonnights_register_scripts');
