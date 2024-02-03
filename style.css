@@ -88,6 +88,10 @@ img {
 
 /* GENERAL STYLES
 -------------------------------------------------------------- */
+html, body {
+    height: 100%;
+    margin: 0;
+}
 
 body {
     background: var(--primary-color);
@@ -199,12 +203,31 @@ body {
     p {
         font-size: 10pt;
     }
+
+    .archive-post {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        display: grid;
+        width: 100%;
+        height: 50%;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 10px;
+        grid-auto-rows: minmax(auto auto );
+    }
+
+    .post-thumbnail {
+        width: 100%;
+        height: 75%;
+        grid-column: 1;
+        grid-row: 1/ span 4;
+    }
+
     #grid-container-body{
         margin: 0 0 0 0;
-        height: 100vh;
+        min-height: 100vh;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 65px 16fr 65px;
+        grid-template-rows: 65px 1fr 65px;
         grid-template-areas:    "header"
                                 "main"
                                 "footer";
@@ -389,12 +412,32 @@ body {
     p {
         font-size: 10pt;
     }
+
+
+    .archive-post {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        display: grid;
+        width: 100%;
+        height: 50%;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 10px;
+        grid-auto-rows: minmax(auto auto );
+    }
+
+    .post-thumbnail {
+        width: 100%;
+        height: 75%;
+        grid-column: 1;
+        grid-row: 1/ span 4;
+    }
+
     #grid-container-body{
         margin: 0 0 0 0;
-        height: 100vh;
+        min-height: 100vh;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 65px 16fr 65px;
+        grid-template-rows: 65px 1fr 65px;
         grid-template-areas:    "header"
                                 "main"
                                 "footer";
@@ -581,12 +624,31 @@ body {
     p {
         font-size: 12pt;
     }
+
+    .archive-post {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        display: grid;
+        width: 100%;
+        height: 50%;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 10px;
+        grid-auto-rows: minmax(auto auto );
+    }
+
+    .post-thumbnail {
+        width: 100%;
+        height: 75%;
+        grid-column: 1;
+        grid-row: 1/ span 4;
+    }
+
     #grid-container-body{
         margin: 0 0 0 0;
-        height: 100vh;
+        min-height: 100vh;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 65px 16fr 65px;
+        grid-template-rows: 65px 1fr 65px;
         grid-template-areas:    "header"
                                 "main"
                                 "footer";
@@ -747,12 +809,32 @@ body {
     p {
         font-size: 12pt;
     }
+
+    .archive-post {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        display: grid;
+        width: 100%;
+        height: 30%;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 10px;
+        grid-auto-rows: minmax(auto auto );
+    
+    }
+    
+    .post-thumbnail {
+        width: 75%;
+        height: 75%;
+        grid-column: 1;
+        grid-row: 1/ span 4;
+    }
+
     #grid-container-body{
         margin: 0 0 0 0;
-        height: 100vh;
+        min-height: 100vh;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 65px 16fr 65px;
+        grid-template-rows: 65px 1fr 65px;
         grid-template-areas:    "header"
                                 "main"
                                 "footer";
@@ -883,12 +965,31 @@ body {
     p {
         font-size: 12pt;
     }
+
+    .archive-post {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        display: grid;
+        width: 100%;
+        height: 30%;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 10px;
+        grid-auto-rows: minmax(auto auto );
+    
+    }
+    
+    .post-thumbnail {
+        width: 75%;
+        height: 75%;
+        grid-column: 1;
+        grid-row: 1/ span 4;
+    }
     #grid-container-body{
         margin: 0 0 0 0;
-        height: 100vh;
+        min-height: 100vh;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 65px 16fr 65px;
+        grid-template-rows: 65px 1fr 65px;
         grid-template-areas:    "header"
                                 "main"
                                 "footer";
@@ -1031,23 +1132,18 @@ header{
 
 /* NEWS PAGE / POST ARCHIVE STYLES
 -------------------------------------------------------------- */
-.archive-post {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    display: grid;
-    width: 100%;
-    height: 30%;
-    grid-template-columns: 50% 50%;
-    grid-column-gap: 10px;
-    grid-auto-rows: minmax(auto auto );
 
+#sub-grid-main-item-archive {
+    grid-area: center;
 }
 
-.post-thumbnail {
-    width: 75%;
-    height: 75%;
-    grid-column: 1;
-    grid-row: 1/ span 4;
+.post-title,
+.post-date,
+.post-excerpt {
+    overflow-wrap: break-word; /* Ensures that long words can be broken and wrapped to the next line */
+    word-wrap: break-word; /* Deprecated version of the above property for older browsers */
+    max-width: 100%; /* Ensures that the container's maximum width is not exceeded */
+    max-height: 100%; /* Ensures that the container's maximum width is not exceeded */
 }
 
 .post-title{
@@ -1070,6 +1166,12 @@ header{
     grid-row: 3 / 4;
 }
 
+.post-date p{
+    padding-top: 5px;
+    color: grey;
+    font-size: 10pt;
+}
+
 .post-read-more{
     grid-column: 2;
     grid-row: 4;
@@ -1078,13 +1180,14 @@ header{
 .post-read-more a{
     text-decoration: none;
     color: grey;
+    font-size: inherit;
 }
 
 #post-details-container {
     display: grid;
     width: 100%;
-    grid-template-areas:    "img img title"
-                            "img img date"
+    grid-template-areas:    "img img info"
+                            "img img info"
                             "details details details";
     grid-template-columns: 2fr 2fr 2fr;
     grid-template-rows: 2fr 2fr 2fr;
@@ -1099,6 +1202,20 @@ header{
     height: 100%;
 }
 
+.post-details-text {
+    grid-area: details;
+}
+
+#post-info-sub-container {
+    grid-area: info;
+    display: grid;
+    grid-template-areas: "title"
+                        "date"
+                        "location";
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr 1fr;
+}
+
 .post-details-title {
     grid-area: title;
 }
@@ -1107,9 +1224,11 @@ header{
     grid-area: date;
 }
 
-.post-details-text {
-    grid-area: details;
+.post-details-location {
+    grid-area: location;
 }
+
+
 
 /* MENU STYLES
 -------------------------------------------------------------- */
@@ -1156,6 +1275,9 @@ header{
 /* FOOTER STYLES
 -------------------------------------------------------------- */
 footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     background-color: white;
     color: black;
 

@@ -4,8 +4,9 @@ get_header();
 ?>
 
 
-
 <main id='grid-item-main'>
+    <div id="sub-grid-main-container">
+        <div id="sub-grid-main-item-archive">
     <?php
         if( have_posts() ) {
             while( have_posts() ) {
@@ -19,6 +20,8 @@ get_header();
         <?php
             the_posts_pagination();
         ?>
+    </div>
+    </div>
     </div>
 </main>
 

@@ -154,7 +154,7 @@ function create_gallery_post_type() {
 add_action('init', 'create_gallery_post_type');
 
 
-// CUSTOM FIELDS
+// CUSTOM FIELDS FOR GALLERIES
 //****************************************************************************************************************************** */
 function add_gallery_custom_fields() {
     add_meta_box(
@@ -179,6 +179,8 @@ function display_gallery_background_color($post) {
     <?php
 }
 
+
+
 function save_gallery_custom_fields($post_id) {
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
     if (isset($_POST['background_color'])) {
@@ -186,6 +188,67 @@ function save_gallery_custom_fields($post_id) {
     }
 }
 add_action('save_post_gallery', 'save_gallery_custom_fields');
+
+// CUSTOM FIELDS FOR NON-GALLERY POSTS
+//****************************************************************************************************************************** */
+function add_custom_fields_for_posts() {
+    // Exclude gallery custom post type
+    global $post;
+    if (!empty($post)) {
+        $post_type = get_post_type($post->ID);
+        if ('gallery' !== $post_type) {
+            // Add meta box for Date(s) and Location here
+            add_meta_box(
+                'event_details', // Unique ID
+                'Event Details', // Box title
+                'render_event_details_meta_box', // Content callback, must be of type callable
+                'post', // Post type
+                'normal', // Context
+                'default' // Priority
+            );
+        }
+    }
+}
+
+add_action('add_meta_boxes', 'add_custom_fields_for_posts');
+
+function render_event_details_meta_box($post) {
+    wp_nonce_field(basename(__FILE__), 'event_details_nonce');
+
+    $event_dates = get_post_meta($post->ID, 'event_dates', true);
+    $event_location = get_post_meta($post->ID, 'event_location', true);
+
+    echo '<p><label for="event_dates">Date(s):</label>';
+    echo '<input type="text" id="event_dates" name="event_dates" value="' . esc_attr($event_dates) . '" class="widefat" /></p>';
+
+    echo '<p><label for="event_location">Location:</label>';
+    echo '<input type="text" id="event_location" name="event_location" value="' . esc_attr($event_location) . '" class="widefat" /></p>';
+}
+
+function save_post_custom_fields($post_id) {
+    if (!isset($_POST['event_details_nonce']) || !wp_verify_nonce($_POST['event_details_nonce'], basename(__FILE__))) {
+        return $post_id;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return $post_id;
+    }
+
+    if ('post' == $_POST['post_type'] && !current_user_can('edit_post', $post_id)) {
+        return $post_id;
+    }
+
+    if (isset($_POST['event_dates'])) {
+        update_post_meta($post_id, 'event_dates', sanitize_text_field($_POST['event_dates']));
+    }
+    if (isset($_POST['event_location'])) {
+        update_post_meta($post_id, 'event_location', sanitize_text_field($_POST['event_location']));
+    }
+}
+add_action('save_post', 'save_post_custom_fields');
+
+// PAGE CUSTOM FIELDS
+//****************************************************************************************************************************** */
 
 function add_page_custom_fields() {
     add_meta_box(
